@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&family=Figtree:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:    #09090e;
+  --bg2:   #0f0f17;
+  --bg3:   #16161f;
+  --bg4:   #1e1e2a;
+  --border:  #ffffff0f;
+  --border2: #ffffff1a;
+  --border3: #ffffff28;
+  --text:  #eeeef5;
+  --text2: #8888a8;
+  --text3: #52526a;
+  --accent:  #7c6dff;
+  --accent2: #ff5f7e;
+  --accent3: #3fe8a0;
+  --accent4: #ffba3b;
+  --accent5: #38b6ff;
+  --mono: 'DM Mono', monospace;
+  --sans: 'Figtree', sans-serif;
+  --display: 'Syne', sans-serif;
+}
+
+html, body, #root { height: 100%; overflow: hidden; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="url"],
+textarea {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+  outline: none;
+  padding: 0.45rem 0.7rem;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+input:focus, textarea:focus { border-color: var(--border3); }
+textarea { resize: none; }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+.fade-in { animation: fadeIn 0.2s ease; }
