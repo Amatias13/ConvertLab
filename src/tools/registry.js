@@ -1,5 +1,9 @@
 export const TOOLS = [
   {
+    section: "AI",
+    items: [{ id: "ai", label: "AI Text Enhancer", icon: "✨", color: "#ff5f7e" }],
+  },
+  {
     section: "Data",
     items: [
       { id: "json", label: "JSON Formatter", icon: "{ }", color: "#7c6dff" },
@@ -9,7 +13,7 @@ export const TOOLS = [
       { id: "jwt", label: "JWT Decoder", icon: "J", color: "#ff5f7e" },
       { id: "base", label: "Number Base", icon: "2↔", color: "#a29bfe" },
       { id: "csv", label: "CSV Viewer", icon: "▦", color: "#fd9a00" },
-      { id: "yaml", label: "YAML ↔ JSON", icon: "Y↔J", color: "#00cec9" },
+      { id: "yaml", label: "YAML ↔ JSON", icon: "Y↔", color: "#00cec9" },
     ],
   },
   {

@@ -1,28 +1,32 @@
 {
   "name": "convertlab",
-  "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
+  "description": "One tool for every transformation — 28 developer tools, 100% local, by André Matias",
+  "author": "André Matias <andem2002@gmail.com> (https://amatias13.github.io/Portfolio/)",
+  "license": "MIT",
+  "homepage": "https://amatias13.github.io/convertlab/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Amatias13/convertlab"
+  },
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "lucide-react": "^1.11.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^10.2.1",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.5.0",
-    "vite": "^8.0.10"
-  }
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  },
+  "keywords": [
+    "developer-tools", "json", "base64", "regex", "markdown",
+    "converter", "formatter", "pwa", "react", "vite",
+    "offline", "privacy", "open-source"
+  ]
 }

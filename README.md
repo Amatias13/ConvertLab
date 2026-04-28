@@ -1,73 +1,90 @@
-# ConvertLab
+# ConvertLab ⚡
 
-> One tool for every transformation.
+> **One tool for every transformation** — 28 developer tools, 100% local, PWA-ready.
 
-A fast, privacy-first, offline-capable multi-tool app built with React + Vite.  
-All transformations happen in your browser — no data is ever sent to a server.
+Built by [André Matias](https://amatias13.github.io/Portfolio/) 🇵🇹 — Full Stack Developer at INSTICC and co-founder of Code Lusitan.
 
-## 🛠 Tools included (20+)
+🔗 **Live:** https://amatias13.github.io/convertlab/  
+🐙 **GitHub:** https://github.com/Amatias13/convertlab  
+☕ **Support:** https://buymeacoffee.com/andrematiasdev
 
-**Data**
-- JSON Formatter & Validator
-- Base64 Encoder/Decoder
-- URL Encoder/Decoder & Parser
-- Hash Generator (SHA-1/256/384/512)
-- JWT Decoder
-- Number Base Converter (Bin/Oct/Dec/Hex + custom)
-- CSV Viewer with sorting
+---
 
-**Preview**
-- Markdown Preview (live)
-- HTML Preview (sandboxed iframe)
-- Email Preview
+## ✨ What is ConvertLab?
 
-**Text**
-- Regex Tester with live highlighting
-- Text Diff (line-by-line)
-- Case Converter (camelCase, snake_case, kebab, Pascal, and more)
+A fast, privacy-first developer toolkit that runs **entirely in your browser**. No accounts, no servers, no data uploads — every transformation is local.
 
-**Generators**
-- UUID Generator (v4, NanoID, tokens)
-- Lorem Ipsum Generator
-- Cron Expression Parser
-- QR Code Generator
+---
 
-**Media & Color**
-- Image Tools (convert, filter, download)
-- Color Picker & Converter (HEX/RGB/HSL + palettes)
-- Timestamp Converter
+## 🛠 Tools (28)
 
-## 🚀 Deploy to GitHub Pages
+| Category | Tools |
+|---|---|
+| **AI** | AI Text Enhancer (Pollinations.ai — free) |
+| **Data** | JSON Formatter, Base64, URL Encoder, Hash Generator, JWT Decoder, Number Base, CSV Viewer, YAML↔JSON |
+| **Preview** | Markdown, HTML Preview, Email Preview, SQL Formatter |
+| **Text** | Regex Tester, Text Diff, Case Converter, HTML Entities, Text Statistics |
+| **Generators** | UUID Generator, Lorem Ipsum, Password Generator, Cron Parser |
+| **Converters** | Timestamp, Unit Converter, Number Formatter |
+| **Media** | Image Tools, Color Picker, QR Code |
 
-1. Fork or clone this repo
-2. Go to **Settings → Pages**
-3. Set source to **GitHub Actions**
-4. Push to `main` — the workflow handles the rest
+---
 
-The site will be live at `https://<your-username>.github.io/convertlab/`
+## 🚀 Features
 
-## 🧑‍💻 Local development
+- 🌙 **Dark & Light themes** with custom colour palettes
+- ⭐ **Favourites** — pin tools to the top of the sidebar
+- 📊 **Usage history** — see your most used tools
+- ⌨️ **Keyboard shortcuts** — `⌘K` search, `1-9` jump, `⌘B` sidebar, `?` help
+- 💾 **Import/Export presets** — share settings across devices
+- 🔒 **Profile with password** — SHA-256 hashed, stored locally only
+- 🎨 **Customisable** — 6 accent palettes + custom, 5 fonts, font size
+- 📱 **PWA** — install on desktop/mobile, works fully offline
+- 🤖 **Free AI** via [Pollinations.ai](https://pollinations.ai) — no API key needed
+
+---
+
+## 🏃 Run locally
 
 ```bash
+git clone https://github.com/Amatias13/convertlab
+cd convertlab
 npm install
 npm run dev
 ```
 
-## 🏗 Build
+## 🌐 Deploy to GitHub Pages
 
-```bash
-npm run build
-```
+1. Push to `main`
+2. Settings → Pages → Source: **GitHub Actions**
+3. The workflow handles the rest automatically
 
-Output goes to `dist/`.
+Live at: `https://Amatias13.github.io/convertlab/`
 
-## Tech stack
+---
 
-- [React 19](https://react.dev)
-- [Vite 8](https://vite.dev)
-- [Lucide React](https://lucide.dev) (icons)
-- Zero external runtime dependencies
+## 🧑‍💻 About the author
 
-## License
+**André Matias** — Full Stack Developer, Moita, Setúbal, Portugal 🇵🇹
 
-MIT
+- 💼 Software Engineer at [INSTICC](https://insticc.org)
+- 🚀 Co-founder of Code Lusitan
+- 🎓 Bachelor's in Computer Engineering — Instituto Politécnico de Setúbal
+- 📌 Skills: React, Node.js, JavaScript, SQL, RESTful APIs, .NET
+
+🔗 [Portfolio](https://amatias13.github.io/Portfolio/) · [LinkedIn](https://www.linkedin.com/in/andre-matias-dev/) · [GitHub](https://github.com/Amatias13)
+
+---
+
+## ☕ Support
+
+If ConvertLab saves you time, consider buying me a coffee:  
+👉 **https://buymeacoffee.com/andrematiasdev**
+
+Or give the repo a ⭐ — it means a lot!
+
+---
+
+## 📄 License
+
+MIT © André Matias 2024

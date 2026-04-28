@@ -2,12 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>convertlab</title>
+    <title>ConvertLab — One tool for every transformation</title>
+    <meta name="description" content="28 free developer tools — JSON, Base64, Regex, Markdown, AI, and more. Runs 100% in your browser. Built by André Matias." />
+    <meta name="keywords" content="json formatter, base64, regex tester, markdown, developer tools, converter, encoder, decoder" />
+    <meta name="author" content="André Matias" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/convertlab/manifest.json" />
+    <meta name="theme-color" content="#09090e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ConvertLab" />
+    <link rel="apple-touch-icon" href="/convertlab/icons/icon-192.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ConvertLab — One tool for every transformation" />
+    <meta property="og:description" content="28 free developer tools, 100% local. JSON, Base64, AI text, Regex, and more." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://amatias13.github.io/convertlab/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/convertlab/icons/icon.svg" />
+
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Register service worker for PWA/offline support
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/convertlab/sw.js', { scope: '/convertlab/' })
+            .then(reg => console.log('[ConvertLab] SW registered', reg.scope))
+            .catch(err => console.warn('[ConvertLab] SW registration failed', err))
+        })
+      }
+    </script>
   </body>
 </html>
