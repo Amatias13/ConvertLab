@@ -19,10 +19,10 @@ const MODES = [
 
 const MODELS = [
   { id: 'openai',        label: 'GPT-4o' },
-  { id: 'claude',        label: 'Claude' },
+  /* { id: 'claude',        label: 'Claude' },
   { id: 'gemini',        label: 'Gemini' },
   { id: 'mistral',       label: 'Mistral' },
-  { id: 'deepseek',      label: 'DeepSeek' },
+  { id: 'deepseek',      label: 'DeepSeek' }, */
 ]
 
 // Secret key injected at build time via VITE_ env var (GitHub Actions secret)

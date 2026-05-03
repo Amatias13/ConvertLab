@@ -35,6 +35,9 @@ jobs:
         run: npm run build
         env:
           VITE_POLLINATIONS_SK: ${{ secrets.POLLINATIONS_SK }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}
 
       - uses: actions/configure-pages@v4
 
