@@ -399,7 +399,7 @@ export const TOOL_META = {
       'Share contact information as a QR code',
     ],
     examples: [
-      { label: 'Website', value: 'https://github.com/your-username/convertlab' },
+      { label: 'Website', value: 'https://github.com/your-username/ConvertLab' },
       { label: 'WiFi', value: 'WIFI:T:WPA;S:MyNetwork;P:MyPassword;;' },
       { label: 'Contact', value: 'BEGIN:VCARD\nVERSION:3.0\nFN:Alice Smith\nEMAIL:alice@example.com\nEND:VCARD' },
     ],

@@ -104,9 +104,9 @@ export default function Header({ activeTool, setActiveTool, searchOpen, setSearc
           <Chip icon="💬" title="Send feedback" onClick={() => setModal('feedback')} />
           <Chip icon="⚙️" title="Settings (⌘,)" onClick={() => setModal('profile')} />
           <a
-            href="https://github.com/Amatias13/convertlab"
+            href="https://github.com/Amatias13/ConvertLab"
             target="_blank" rel="noreferrer"
-            title="GitHub — Amatias13/convertlab"
+            title="GitHub — Amatias13/ConvertLab"
             style={{ height: 34, padding: '0 10px', borderRadius: 9, border: '1px solid var(--border)', background: 'transparent', color: 'var(--text3)', fontSize: 12, display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none', transition: 'all 0.15s', flexShrink: 0, fontFamily: 'var(--sans)' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg3)'; e.currentTarget.style.color = 'var(--text)' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--text3)' }}

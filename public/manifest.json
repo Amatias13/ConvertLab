@@ -2,8 +2,8 @@
   "name": "ConvertLab",
   "short_name": "ConvertLab",
   "description": "One tool for every transformation — 28 developer tools, 100% local.",
-  "start_url": "/convertlab/",
-  "scope": "/convertlab/",
+  "start_url": "/ConvertLab/",
+  "scope": "/ConvertLab/",
   "display": "standalone",
   "orientation": "any",
   "theme_color": "#09090e",
@@ -11,21 +11,21 @@
   "categories": ["developer", "productivity", "utilities"],
   "icons": [
     {
-      "src": "/convertlab/icons/icon-192.png",
+      "src": "/ConvertLab/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/convertlab/icons/icon-512.png",
+      "src": "/ConvertLab/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
   "shortcuts": [
-    { "name": "JSON Formatter", "url": "/convertlab/?tool=json", "description": "Format and validate JSON" },
-    { "name": "AI Text Enhancer", "url": "/convertlab/?tool=ai", "description": "Improve text with AI" },
-    { "name": "Base64 Encoder", "url": "/convertlab/?tool=base64", "description": "Encode/decode Base64" }
+    { "name": "JSON Formatter", "url": "/ConvertLab/?tool=json", "description": "Format and validate JSON" },
+    { "name": "AI Text Enhancer", "url": "/ConvertLab/?tool=ai", "description": "Improve text with AI" },
+    { "name": "Base64 Encoder", "url": "/ConvertLab/?tool=base64", "description": "Encode/decode Base64" }
   ]
 }

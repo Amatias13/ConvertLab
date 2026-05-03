@@ -13,7 +13,7 @@ async function sendViaEmailJS({ feedbackType, message, replyTo }) {
     template_params: {
       feedback_type: feedbackType,
       message,
-      reply_to: replyTo || 'no-reply@convertlab.app',
+      reply_to: replyTo || 'no-reply@ConvertLab.app',
       from_name: replyTo ? replyTo.split('@')[0] : 'Anonymous',
       time: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }),
     },
@@ -208,7 +208,7 @@ export function CoffeeModal() {
               </a>
             ))}
           </div>
-          <a href="https://github.com/Amatias13/convertlab" target="_blank" rel="noreferrer" style={{ fontSize: 12, color: 'var(--text3)', textDecoration: 'none' }}>
+          <a href="https://github.com/Amatias13/ConvertLab" target="_blank" rel="noreferrer" style={{ fontSize: 12, color: 'var(--text3)', textDecoration: 'none' }}>
             Or ⭐ star the repo on GitHub — it helps a lot!
           </a>
           <button onClick={() => setModal(null)} style={{ fontSize: 12, color: 'var(--text3)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--sans)' }}>Maybe later</button>

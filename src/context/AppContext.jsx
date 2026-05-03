@@ -137,7 +137,7 @@ export function AppProvider({ children }) {
     const data = { version: '2.0', exportedAt: new Date().toISOString(), exportedBy: profile.displayName || 'ConvertLab User', profile, theme, favourites }
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
-    Object.assign(document.createElement('a'), { href: url, download: `convertlab-presets-${Date.now()}.json` }).click()
+    Object.assign(document.createElement('a'), { href: url, download: `ConvertLab-presets-${Date.now()}.json` }).click()
     URL.revokeObjectURL(url)
     showToast('Presets exported!', 'success')
   }, [profile, theme, favourites, showToast])

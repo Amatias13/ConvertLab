@@ -113,7 +113,7 @@ function AboutGlobal() {
             <ExtLink href="https://github.com/Amatias13">GitHub</ExtLink>
             <ExtLink href="https://www.linkedin.com/in/andre-matias-dev/">LinkedIn</ExtLink>
             <ExtLink href="https://amatias13.github.io/Portfolio/">Portfolio</ExtLink>
-            <ExtLink href="https://github.com/Amatias13/convertlab">ConvertLab repo</ExtLink>
+            <ExtLink href="https://github.com/Amatias13/ConvertLab">ConvertLab repo</ExtLink>
             <a href="#" onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('open-coffee')) }}
               style={{ color: 'var(--accent4)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
               ☕ Buy me a coffee

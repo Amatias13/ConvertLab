@@ -1,7 +1,7 @@
-const CACHE_NAME = 'convertlab-v2'
+const CACHE_NAME = 'ConvertLab-v2'
 const STATIC_ASSETS = [
-  '/convertlab/',
-  '/convertlab/index.html',
+  '/ConvertLab/',
+  '/ConvertLab/index.html',
 ]
 
 // Install — pre-cache shell
@@ -53,6 +53,6 @@ self.addEventListener('fetch', (e) => {
         caches.open(CACHE_NAME).then(c => c.put(e.request, clone))
         return res
       })
-      .catch(() => caches.match(e.request).then(cached => cached || caches.match('/convertlab/')))
+      .catch(() => caches.match(e.request).then(cached => cached || caches.match('/ConvertLab/')))
   )
 })

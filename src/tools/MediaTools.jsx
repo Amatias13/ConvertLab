@@ -34,7 +34,7 @@ export function ImageTool({ showToast }) {
     if (!canvasRef.current) return
     const a = document.createElement('a')
     a.href = canvasRef.current.toDataURL(format, 0.92)
-    a.download = 'convertlab.' + format.split('/')[1]
+    a.download = 'ConvertLab.' + format.split('/')[1]
     a.click()
   }
 

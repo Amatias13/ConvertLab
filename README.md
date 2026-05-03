@@ -4,14 +4,14 @@
 
 **One tool for every transformation**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-convertlab-7c6dff?style=for-the-badge&logo=github-pages&logoColor=white)](https://amatias13.github.io/convertlab/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-ConvertLab-7c6dff?style=for-the-badge&logo=github-pages&logoColor=white)](https://amatias13.github.io/ConvertLab/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-3fe8a0?style=for-the-badge)](LICENSE)
 [![Made in Portugal](https://img.shields.io/badge/Made%20in-Portugal%20🇵🇹-ff5f7e?style=for-the-badge)](https://amatias13.github.io/Portfolio/)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a-coffee%20☕-ffba3b?style=for-the-badge)](https://buymeacoffee.com/andrematiasdev)
 
 28+ developer tools — 100% local, no accounts, no servers, offline-ready.
 
-[**→ Open ConvertLab**](https://amatias13.github.io/convertlab/)
+[**→ Open ConvertLab**](https://amatias13.github.io/ConvertLab/)
 
 </div>
 
@@ -48,8 +48,8 @@
 ## 🚀 Run locally
 
 ```bash
-git clone https://github.com/Amatias13/convertlab
-cd convertlab
+git clone https://github.com/Amatias13/ConvertLab
+cd ConvertLab
 npm install
 npm run dev
 ```
@@ -74,7 +74,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ConvertLab is free, open-source, and ad-free. If it saves you time:
 
 👉 **[Buy me a coffee](https://buymeacoffee.com/andrematiasdev)**  
-⭐ **[Star on GitHub](https://github.com/Amatias13/convertlab)** — it helps a lot!
+⭐ **[Star on GitHub](https://github.com/Amatias13/ConvertLab)** — it helps a lot!
 
 ---
 
