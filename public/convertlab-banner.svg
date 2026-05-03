@@ -1,0 +1,50 @@
+<svg width="680" height="340" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="340" rx="16" fill="#0e0e14"/>
+  <line x1="0" y1="113" x2="680" y2="113" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+  <line x1="0" y1="226" x2="680" y2="226" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+  <line x1="170" y1="0" x2="170" y2="340" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+  <line x1="340" y1="0" x2="340" y2="340" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+  <line x1="510" y1="0" x2="510" y2="340" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+  <ellipse cx="90" cy="170" rx="60" ry="60" fill="#7c6dff" fill-opacity="0.12"/>
+  <text x="44" y="152" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="52" fill="#7c6dff">⚡</text>
+  <text x="44" y="200" font-family="Figtree,DM Sans,sans-serif" font-weight="700" font-size="30" fill="#ffffff">ConvertLab</text>
+  <text x="44" y="224" font-family="Figtree,DM Sans,sans-serif" font-weight="400" font-size="13" fill="#888aaa">One tool for every transformation</text>
+  <rect x="44" y="242" width="90" height="22" rx="11" fill="#7c6dff" fill-opacity="0.18" stroke="#7c6dff" stroke-opacity="0.35" stroke-width="0.5"/>
+  <text x="89" y="257" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" font-weight="500" fill="#a89fff">100% Local</text>
+  <rect x="142" y="242" width="72" height="22" rx="11" fill="#3fe8a0" fill-opacity="0.12" stroke="#3fe8a0" stroke-opacity="0.3" stroke-width="0.5"/>
+  <text x="178" y="257" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" font-weight="500" fill="#3fe8a0">No server</text>
+  <rect x="222" y="242" width="56" height="22" rx="11" fill="#ffba3b" fill-opacity="0.12" stroke="#ffba3b" stroke-opacity="0.3" stroke-width="0.5"/>
+  <text x="250" y="257" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" font-weight="500" fill="#ffba3b">PWA</text>
+  <line x1="310" y1="40" x2="310" y2="300" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+  <rect x="328" y="36" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.07" stroke-width="0.5"/>
+  <text x="346" y="58" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="16" fill="#7c6dff">📦</text>
+  <text x="370" y="58" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#e0e0f0">JSON Formatter</text>
+  <text x="370" y="73" font-family="Figtree,sans-serif" font-size="10" fill="#555770">Validate &amp; pretty-print</text>
+  <rect x="492" y="36" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.07" stroke-width="0.5"/>
+  <text x="510" y="58" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="16" fill="#3fe8a0">🔑</text>
+  <text x="534" y="58" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#e0e0f0">JWT Decoder</text>
+  <text x="534" y="73" font-family="Figtree,sans-serif" font-size="10" fill="#555770">Inspect tokens</text>
+  <rect x="328" y="104" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.07" stroke-width="0.5"/>
+  <text x="346" y="126" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="16" fill="#ff5f7e">🔗</text>
+  <text x="370" y="126" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#e0e0f0">Base64</text>
+  <text x="370" y="141" font-family="Figtree,sans-serif" font-size="10" fill="#555770">Encode / decode</text>
+  <rect x="492" y="104" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.07" stroke-width="0.5"/>
+  <text x="510" y="126" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="16" fill="#ffba3b">✏️</text>
+  <text x="534" y="126" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#e0e0f0">Regex Tester</text>
+  <text x="534" y="141" font-family="Figtree,sans-serif" font-size="10" fill="#555770">Live match highlight</text>
+  <rect x="328" y="172" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.07" stroke-width="0.5"/>
+  <text x="346" y="194" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="16" fill="#38b6ff">🎨</text>
+  <text x="370" y="194" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#e0e0f0">Color Picker</text>
+  <text x="370" y="209" font-family="Figtree,sans-serif" font-size="10" fill="#555770">HEX · RGB · HSL</text>
+  <rect x="492" y="172" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.07" stroke-width="0.5"/>
+  <text x="510" y="194" font-family="Segoe UI Emoji,Apple Color Emoji,sans-serif" font-size="16" fill="#a29bfe">🤖</text>
+  <text x="534" y="194" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#e0e0f0">AI Enhancer</text>
+  <text x="534" y="209" font-family="Figtree,sans-serif" font-size="10" fill="#555770">Free, no key needed</text>
+  <rect x="328" y="240" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.05" stroke-width="0.5"/>
+  <text x="370" y="267" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#333450">QR Code</text>
+  <text x="370" y="282" font-family="Figtree,sans-serif" font-size="10" fill="#2a2b40">Generate instantly</text>
+  <rect x="492" y="240" width="152" height="58" rx="8" fill="#16161f" stroke="#ffffff" stroke-opacity="0.05" stroke-width="0.5"/>
+  <text x="534" y="267" font-family="Figtree,sans-serif" font-size="12" font-weight="500" fill="#333450">+ 22 more</text>
+  <text x="534" y="282" font-family="Figtree,sans-serif" font-size="10" fill="#2a2b40">All free, all local</text>
+  <text x="44" y="312" font-family="Figtree,sans-serif" font-size="11" fill="#444560">Made with love by André Matias · Portugal · MIT License</text>
+</svg>

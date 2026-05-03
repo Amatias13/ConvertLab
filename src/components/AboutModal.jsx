@@ -39,10 +39,10 @@ function AboutGlobal() {
         <h3 style={{ fontFamily: 'var(--display)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem' }}>🎯 Goals</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
           {[
-            ['⚡', 'Speed', 'Every tool responds instantly — no loading, no waiting.'],
-            ['🔒', 'Privacy', 'Your data never leaves your browser. Nothing stored on servers.'],
-            ['🎨', 'Simplicity', 'Clean, distraction-free UI that gets out of your way.'],
-            ['🛠', 'Power', 'Deep functionality for developers, designers, and creators.'],
+            ['⚡', 'Speed',    'Every tool responds instantly — no loading, no waiting.'],
+            ['🔒', 'Privacy',  'Your data never leaves your browser. Nothing stored on servers.'],
+            ['🎨', 'Simplicity','Clean, distraction-free UI that gets out of your way.'],
+            ['🛠', 'Power',    'Deep functionality for developers, designers, and creators.'],
           ].map(([icon, title, desc]) => (
             <div key={title} style={{ background: 'var(--bg3)', borderRadius: 10, border: '1px solid var(--border)', padding: '0.85rem' }}>
               <div style={{ marginBottom: 4, fontWeight: 600 }}>{icon} {title}</div>
@@ -57,12 +57,12 @@ function AboutGlobal() {
         <h3 style={{ fontFamily: 'var(--display)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem' }}>⚙️ Technologies</h3>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {[
-            { name: 'React 19', color: '#61dafb' },
-            { name: 'Vite 8', color: '#646cff' },
+            { name: 'React 19',        color: '#61dafb' },
+            { name: 'Vite 8',          color: '#646cff' },
             { name: 'Pollinations.ai', color: '#3fe8a0' },
-            { name: 'Web Crypto API', color: '#ffba3b' },
-            { name: 'PWA / Workbox', color: '#ff5f7e' },
-            { name: 'GitHub Pages', color: '#8888a8' },
+            { name: 'Web Crypto API',  color: '#ffba3b' },
+            { name: 'PWA / Workbox',   color: '#ff5f7e' },
+            { name: 'GitHub Pages',    color: '#8888a8' },
           ].map(t => (
             <div key={t.name} style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, padding: '0.4rem 0.8rem', fontSize: 12, fontWeight: 600, color: t.color }}>
               {t.name}

@@ -88,13 +88,13 @@ export function ProfileModal() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
                   {ACCENT_PALETTES.map((pal, idx) => (
                     <button key={pal.name} onClick={() => saveProfile({ paletteIdx: idx })}
-                      style={{ padding: '0.65rem 0.75rem', borderRadius: 10, border: `2px solid ${profile.paletteIdx === idx ? pal.accent || 'var(--accent)' : 'var(--border)'}`, background: 'var(--bg3)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'all 0.15s' }}>
+                      style={{ padding: '0.65rem 0.75rem', borderRadius: 10, border: `2px solid ${profile.paletteIdx === idx ? (pal.accent || 'var(--accent)') : 'var(--border)'}`, background: profile.paletteIdx === idx ? 'var(--bg4)' : 'var(--bg3)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'all 0.15s' }}>
                       <div style={{ display: 'flex', gap: 3 }}>
-                        {[pal.accent || '#888', pal.accent2 || '#999', pal.accent3 || '#aaa'].map((c, i) => (
-                          <div key={i} style={{ width: 12, height: 12, borderRadius: '50%', background: c }} />
+                        {[pal.accent || '#777', pal.accent2 || '#999', pal.accent3 || '#aaa'].map((c, i) => (
+                          <div key={i} style={{ width: 11, height: 11, borderRadius: '50%', background: c, flexShrink: 0 }} />
                         ))}
                       </div>
-                      <span style={{ fontSize: 12, color: 'var(--text2)', fontFamily: 'var(--sans)' }}>{pal.name}</span>
+                      <span style={{ fontSize: 12, color: profile.paletteIdx === idx ? 'var(--text)' : 'var(--text2)', fontFamily: 'var(--sans)', fontWeight: profile.paletteIdx === idx ? 600 : 400 }}>{pal.name}</span>
                     </button>
                   ))}
                 </div>
@@ -107,7 +107,7 @@ export function ProfileModal() {
                         <div style={{ fontSize: 10, color: 'var(--text3)', marginBottom: 4 }}>{label}</div>
                         <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
                           <input type="color" value={profile[key] || '#7c6dff'} onChange={e => saveProfile({ [key]: e.target.value })}
-                            style={{ width: 32, height: 28, border: 'none', background: 'none', cursor: 'pointer', padding: 0 }} />
+                            style={{ width: 32, height: 28, border: 'none', background: 'none', cursor: 'pointer', padding: 0, borderRadius: 4 }} />
                           <input type="text" value={profile[key] || ''} onChange={e => saveProfile({ [key]: e.target.value })}
                             style={{ fontFamily: 'var(--mono)', fontSize: 11, flex: 1 }} />
                         </div>

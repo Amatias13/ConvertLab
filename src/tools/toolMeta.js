@@ -418,6 +418,6 @@ export const TOOL_META = {
     ],
     examples: [],
     keywords: ['ai', 'text', 'grammar', 'improve', 'writing', 'summary', 'claude', 'anthropic'],
-    tips: 'Use the "Summarise" mode to get a concise summary of long text. Great for quickly understanding articles or reports.',
+    tips: 'You need a Claude API key to use this tool. Get one at console.anthropic.com.',
   },
 }

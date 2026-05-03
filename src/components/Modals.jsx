@@ -1,26 +1,88 @@
 import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+async function sendViaEmailJS({ feedbackType, message, replyTo }) {
+  const payload = {
+    service_id: EMAILJS_SERVICE_ID,
+    template_id: EMAILJS_TEMPLATE_ID,
+    user_id: EMAILJS_PUBLIC_KEY,
+    template_params: {
+      feedback_type: feedbackType,
+      message,
+      reply_to: replyTo || 'no-reply@convertlab.app',
+      from_name: replyTo ? replyTo.split('@')[0] : 'Anonymous',
+      time: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }),
+    },
+  }
+
+  const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`EmailJS error ${res.status}: ${text}`)
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export function FeedbackModal() {
   const { modal, setModal, showToast, addNotification } = useApp()
+
   const [type, setType] = useState('suggestion')
   const [text, setText] = useState('')
   const [email, setEmail] = useState('')
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+
   if (modal !== 'feedback') return null
 
-  const handleSubmit = () => {
-    if (!text.trim()) { showToast('Please write your feedback first', 'warn'); return }
-    setSent(true)
-    addNotification({ type: 'tip', title: 'Thank you for your feedback!', body: 'Your feedback helps improve ConvertLab.' })
-    setTimeout(() => { setModal(null); setSent(false); setText(''); setEmail('') }, 2000)
+  const handleSubmit = async () => {
+    if (!text.trim()) {
+      showToast('Please write your feedback first', 'warn')
+      return
+    }
+
+    setLoading(true)
+    try {
+      await sendViaEmailJS({
+        feedbackType: type,
+        message: text.trim(),
+        replyTo: email.trim() || null,
+      })
+
+      setSent(true)
+      addNotification({
+        type: 'tip',
+        title: 'Thank you for your feedback!',
+        body: 'Your feedback was sent successfully.',
+      })
+      setTimeout(() => {
+        setModal(null)
+        setSent(false)
+        setText('')
+        setEmail('')
+      }, 2500)
+    } catch (err) {
+      console.error('Feedback send failed:', err)
+      showToast('Failed to send feedback. Please try again.', 'err')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const types = [
     { id: 'suggestion', label: '💡 Suggestion', desc: 'Feature ideas or improvements' },
-    { id: 'bug',        label: '🐛 Bug report',  desc: 'Something is broken or wrong' },
-    { id: 'praise',     label: '⭐ Praise',       desc: 'Share what you love' },
-    { id: 'other',      label: '💬 Other',        desc: 'Anything else' },
+    { id: 'bug', label: '🐛 Bug report', desc: 'Something is broken or wrong' },
+    { id: 'praise', label: '⭐ Praise', desc: 'Share what you love' },
+    { id: 'other', label: '💬 Other', desc: 'Anything else' },
   ]
 
   return (
@@ -30,11 +92,12 @@ export function FeedbackModal() {
           <span style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: '1rem' }}>💬 Send Feedback</span>
           <button onClick={() => setModal(null)} style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', fontSize: 18 }}>✕</button>
         </div>
+
         {sent ? (
           <div style={{ padding: '3rem', textAlign: 'center' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🎉</div>
             <div style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Thank you!</div>
-            <div style={{ color: 'var(--text2)', fontSize: 13 }}>Your feedback has been received.</div>
+            <div style={{ color: 'var(--text2)', fontSize: 13 }}>Your feedback was sent successfully.</div>
           </div>
         ) : (
           <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -47,11 +110,23 @@ export function FeedbackModal() {
                 </button>
               ))}
             </div>
-            <textarea value={text} onChange={e => setText(e.target.value)} rows={5} placeholder="Describe your idea, bug, or experience..." style={{ width: '100%' }} />
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com (optional)" />
-            <button onClick={handleSubmit} style={{ padding: '0.6rem 1rem', borderRadius: 10, border: 'none', background: 'var(--accent)', color: '#fff', fontFamily: 'var(--sans)', fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
-              Send Feedback
+
+            <textarea value={text} onChange={e => setText(e.target.value)} rows={5}
+              placeholder="Describe your idea, bug, or experience..." style={{ width: '100%' }} disabled={loading} />
+
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+              placeholder="your@email.com (optional)" disabled={loading} />
+
+            <button onClick={handleSubmit} disabled={loading}
+              style={{ padding: '0.6rem 1rem', borderRadius: 10, border: 'none', background: loading ? 'var(--border2)' : 'var(--accent)', color: '#fff', fontFamily: 'var(--sans)', fontWeight: 600, fontSize: 14, cursor: loading ? 'not-allowed' : 'pointer', transition: 'background 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+              {loading ? (
+                <>
+                  <span style={{ width: 14, height: 14, border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.7s linear infinite' }} />
+                  Sending…
+                </>
+              ) : 'Send Feedback'}
             </button>
+            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
           </div>
         )}
       </div>
@@ -102,7 +177,6 @@ export function NotificationsPanel({ onClose }) {
 
 export function CoffeeModal() {
   const { modal, setModal } = useApp()
-  // Also listen for custom event from About modal
   useEffect(() => {
     const handler = () => setModal('coffee')
     document.addEventListener('open-coffee', handler)

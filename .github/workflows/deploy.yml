@@ -33,6 +33,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_POLLINATIONS_SK: ${{ secrets.POLLINATIONS_SK }}
 
       - uses: actions/configure-pages@v4
 
