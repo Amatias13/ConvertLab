@@ -10,18 +10,8 @@
   "background_color": "#09090e",
   "categories": ["developer", "productivity", "utilities"],
   "icons": [
-    {
-      "src": "/ConvertLab/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/ConvertLab/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ],
   "shortcuts": [
     { "name": "JSON Formatter", "url": "/ConvertLab/?tool=json", "description": "Format and validate JSON" },
