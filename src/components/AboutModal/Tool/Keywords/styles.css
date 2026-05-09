@@ -1,0 +1,14 @@
+.keywordsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.keyword {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text3);
+}

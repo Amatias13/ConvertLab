@@ -1,0 +1,33 @@
+.goals-title {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.goals-item {
+  background: var(--bg3);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 0.85rem;
+}
+
+.goals-item-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.goals-item-description {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.6;
+}

@@ -5,20 +5,20 @@ import {
 } from '../components/UI'
 
 const MODES = [
-  { id: 'improve',   label: '✨ Improve',      system: 'Improve the grammar, style, and clarity. Keep the same meaning. Return ONLY the improved text, no explanations.' },
-  { id: 'formal',    label: '🎩 Formal',        system: 'Rewrite in a formal, professional tone. Return ONLY the rewritten text.' },
-  { id: 'casual',    label: '😊 Casual',        system: 'Rewrite in a friendly, casual tone. Return ONLY the rewritten text.' },
-  { id: 'shorter',   label: '✂️ Shorter',       system: 'Make more concise. Remove redundancy, keep key info. Return ONLY the shortened text.' },
-  { id: 'longer',    label: '📝 Expand',        system: 'Expand with detail and examples. Return ONLY the expanded text.' },
-  { id: 'summarise', label: '📋 Summarise',     system: 'Write a 2-3 sentence summary. Return ONLY the summary.' },
-  { id: 'bullets',   label: '• Bullets',        system: 'Convert to bullet points. Return ONLY the bullet list.' },
-  { id: 'keywords',  label: '🏷 Keywords',      system: 'Extract 8-12 keywords. Return ONLY a comma-separated list.' },
-  { id: 'translate', label: '🇵🇹 PT',           system: 'Translate to European Portuguese. Return ONLY the translation.' },
-  { id: 'fix',       label: '🔧 Fix grammar',   system: 'Fix grammar and spelling only. Return ONLY the corrected text.' },
+  { id: 'improve', label: '✨ Improve', system: 'Improve the grammar, style, and clarity. Keep the same meaning. Return ONLY the improved text, no explanations.' },
+  { id: 'formal', label: '🎩 Formal', system: 'Rewrite in a formal, professional tone. Return ONLY the rewritten text.' },
+  { id: 'casual', label: '😊 Casual', system: 'Rewrite in a friendly, casual tone. Return ONLY the rewritten text.' },
+  { id: 'shorter', label: '✂️ Shorter', system: 'Make more concise. Remove redundancy, keep key info. Return ONLY the shortened text.' },
+  { id: 'longer', label: '📝 Expand', system: 'Expand with detail and examples. Return ONLY the expanded text.' },
+  { id: 'summarise', label: '📋 Summarise', system: 'Write a 2-3 sentence summary. Return ONLY the summary.' },
+  { id: 'bullets', label: '• Bullets', system: 'Convert to bullet points. Return ONLY the bullet list.' },
+  { id: 'keywords', label: '🏷 Keywords', system: 'Extract 8-12 keywords. Return ONLY a comma-separated list.' },
+  { id: 'translate', label: '🇵🇹 PT', system: 'Translate to European Portuguese. Return ONLY the translation.' },
+  { id: 'fix', label: '🔧 Fix grammar', system: 'Fix grammar and spelling only. Return ONLY the corrected text.' },
 ]
 
 const MODELS = [
-  { id: 'openai',        label: 'GPT-4o' },
+  { id: 'openai', label: 'GPT-4o' },
   /* { id: 'claude',        label: 'Claude' },
   { id: 'gemini',        label: 'Gemini' },
   { id: 'mistral',       label: 'Mistral' },
@@ -47,7 +47,7 @@ async function callWithSK(systemPrompt, userText, model) {
       model,
       messages: [
         { role: 'system', content: systemPrompt },
-        { role: 'user',   content: userText },
+        { role: 'user', content: userText },
       ],
       temperature: 0.7,
     }),
@@ -71,7 +71,7 @@ async function callAnonymous(systemPrompt, userText, model) {
       model,
       messages: [
         { role: 'system', content: systemPrompt },
-        { role: 'user',   content: userText },
+        { role: 'user', content: userText },
       ],
       temperature: 0.7,
       private: true,
@@ -105,12 +105,12 @@ async function callAnonymousGET(systemPrompt, userText, model) {
 }
 
 export default function AiTool({ showToast }) {
-  const [input,   setInput]   = useState('')
-  const [output,  setOutput]  = useState('')
-  const [mode,    setMode]    = useState('improve')
-  const [model,   setModel]   = useState('openai')
+  const [input, setInput] = useState('')
+  const [output, setOutput] = useState('')
+  const [mode, setMode] = useState('improve')
+  const [model, setModel] = useState('openai')
   const [loading, setLoading] = useState(false)
-  const [error,   setError]   = useState('')
+  const [error, setError] = useState('')
 
   const hasSK = Boolean(SK)
 
@@ -122,15 +122,15 @@ export default function AiTool({ showToast }) {
     // Attempt chain: SK first (if available), then anonymous fallbacks
     const attempts = hasSK
       ? [
-          () => callWithSK(sel.system, input, model),
-          () => callAnonymous(sel.system, input, model),
-          () => callAnonymousGET(sel.system, input, model),
-        ]
+        () => callWithSK(sel.system, input, model),
+        () => callAnonymous(sel.system, input, model),
+        () => callAnonymousGET(sel.system, input, model),
+      ]
       : [
-          () => callAnonymous(sel.system, input, model),
-          () => callAnonymousGET(sel.system, input, model),
-          () => callAnonymousGET(sel.system, input, model === 'openai' ? 'mistral' : 'openai'),
-        ]
+        () => callAnonymous(sel.system, input, model),
+        () => callAnonymousGET(sel.system, input, model),
+        () => callAnonymousGET(sel.system, input, model === 'openai' ? 'mistral' : 'openai'),
+      ]
 
     let result = null
     let lastErr = null

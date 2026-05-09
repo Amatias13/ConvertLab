@@ -1,0 +1,8 @@
+.ext-link {
+  color: var(--accent5);
+  text-decoration: none;
+}
+
+.ext-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,6 @@
+.icon-svg {
+  flex-shrink: 0;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}

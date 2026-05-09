@@ -1,0 +1,16 @@
+.tab-button {
+  padding: 0.45rem 0.9rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text2);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.15s ease;
+}
+
+.tab-button.active {
+  background: var(--accent);
+  color: #fff;
+}

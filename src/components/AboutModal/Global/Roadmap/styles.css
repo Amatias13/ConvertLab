@@ -1,0 +1,24 @@
+.roadmap-title {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.roadmap-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 13px;
+}
+
+.roadmap-item-icon {
+  min-width: 16px;
+  font-weight: 700;
+}

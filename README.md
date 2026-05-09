@@ -9,8 +9,7 @@
 [![Made with React](https://img.shields.io/badge/React-18-61dafb?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
 [![PWA](https://img.shields.io/badge/PWA-Ready-5a0fc8?style=for-the-badge&logo=pwa&logoColor=white)](https://amatias13.github.io/ConvertLab/)
-[![Made in Portugal](https://img.shields.io/badge/Made%20in-Portugal-ff5f7e?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjI1IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDA2NjAwIi8+PHJlY3QgeD0iMjUiIHdpZHRoPSIzOSIgaGVpZ2h0PSI2NCIgZmlsbD0iI2ZmMDAwMCIvPjwvc3ZnPg==&logoColor=white)](https://amatias13.github.io/Portfolio/)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-ffba3b?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/andrematiasdev)
+[![Made in Portugal](https://img.shields.io/badge/Made%20in-Portugal%20🇵🇹-ff5f7e?style=for-the-badge)](https://amatias13.github.io/Portfolio/)
 
 <br/>
 
@@ -26,7 +25,7 @@
 
 <table>
 <tr>
-<td width="50%">
+<td width="50%" valign="top">
 
 ### 🤖 AI
 | Tool | Description |
@@ -40,8 +39,8 @@
 | Base64 | Encode / decode Base64 strings |
 | URL Encoder | Encode / decode URLs |
 | Hash Generator | MD5, SHA-1, SHA-256, SHA-512 |
-| JWT Decoder | Inspect JWT tokens |
-| Number Base | Convert between bases (2/8/10/16) |
+| JWT Decoder | Inspect & decode JWT tokens |
+| Number Base | Convert between bases 2 / 8 / 10 / 16 |
 | CSV Viewer | Visualize CSV as a table |
 | YAML ↔ JSON | Convert between YAML and JSON |
 
@@ -51,24 +50,24 @@
 | Markdown Preview | Live Markdown renderer |
 | HTML Preview | Live HTML sandbox |
 | Email Preview | Render HTML emails |
-| SQL Formatter | Format & highlight SQL |
+| SQL Formatter | Format & highlight SQL queries |
 
 </td>
-<td width="50%">
+<td width="50%" valign="top">
 
 ### ✏️ Text
 | Tool | Description |
 |------|-------------|
 | Regex Tester | Live regex with match highlight |
 | Text Diff | Compare two texts side-by-side |
-| Case Converter | camelCase, snake_case, UPPER, etc. |
+| Case Converter | camelCase, snake_case, UPPER and more |
 | HTML Entities | Encode / decode HTML entities |
 | Text Statistics | Word count, readability, frequency |
 
 ### 🎲 Generators
 | Tool | Description |
 |------|-------------|
-| UUID Generator | v4 UUIDs, bulk generation |
+| UUID Generator | v4 UUIDs with bulk generation |
 | Lorem Ipsum | Placeholder text generator |
 | Password Generator | Secure, configurable passwords |
 | Cron Parser | Parse & explain cron expressions |
@@ -77,13 +76,13 @@
 | Tool | Description |
 |------|-------------|
 | Timestamp | Unix ↔ human-readable dates |
-| Unit Converter | Length, weight, temperature, etc. |
+| Unit Converter | Length, weight, temperature & more |
 | Number Formatter | Locale-aware number formatting |
 
 ### 🎨 Media
 | Tool | Description |
 |------|-------------|
-| Image Tools | Resize, convert, compress |
+| Image Tools | Resize, convert & compress images |
 | Color Picker | HEX / RGB / HSL with palettes |
 | QR Code | Generate QR codes instantly |
 
@@ -97,56 +96,16 @@
 
 <table>
 <tr>
-<td align="center" width="25%">
-<br/>
-🌙<br/>
-<b>Themes</b><br/>
-<sub>Dark & Light with 6 accent palettes + custom colour picker</sub>
-</td>
-<td align="center" width="25%">
-<br/>
-⚡<br/>
-<b>Instant</b><br/>
-<sub>Every tool responds instantly — no loading, no spinners</sub>
-</td>
-<td align="center" width="25%">
-<br/>
-🔒<br/>
-<b>Private</b><br/>
-<sub>Your data never leaves the browser. Zero server calls.</sub>
-</td>
-<td align="center" width="25%">
-<br/>
-📱<br/>
-<b>PWA</b><br/>
-<sub>Install on desktop or mobile. Works fully offline.</sub>
-</td>
+<td align="center" width="25%">🌙<br/><b>Themes</b><br/><sub>Dark & Light with 6 accent palettes + custom colour picker</sub></td>
+<td align="center" width="25%">⚡<br/><b>Instant</b><br/><sub>Every tool responds instantly — no loading, no spinners</sub></td>
+<td align="center" width="25%">🔒<br/><b>Private</b><br/><sub>Your data never leaves the browser. Zero server calls.</sub></td>
+<td align="center" width="25%">📱<br/><b>PWA</b><br/><sub>Install on desktop or mobile. Works fully offline.</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%">
-<br/>
-⭐<br/>
-<b>Favourites</b><br/>
-<sub>Pin your most-used tools to the sidebar</sub>
-</td>
-<td align="center" width="25%">
-<br/>
-⌨️<br/>
-<b>Shortcuts</b><br/>
-<sub>⌘K search · 1–9 jump · ⌘B sidebar · ? help</sub>
-</td>
-<td align="center" width="25%">
-<br/>
-💾<br/>
-<b>Portable</b><br/>
-<sub>Export & import all settings across devices</sub>
-</td>
-<td align="center" width="25%">
-<br/>
-🤖<br/>
-<b>Free AI</b><br/>
-<sub>Pollinations.ai — no API key, no account needed</sub>
-</td>
+<td align="center" width="25%">⭐<br/><b>Favourites</b><br/><sub>Pin your most-used tools to the sidebar</sub></td>
+<td align="center" width="25%">⌨️<br/><b>Shortcuts</b><br/><sub>⌘K search · 1–9 jump · ⌘B sidebar · ? help</sub></td>
+<td align="center" width="25%">💾<br/><b>Portable</b><br/><sub>Export & import all settings across devices</sub></td>
+<td align="center" width="25%">🤖<br/><b>Free AI</b><br/><sub>Pollinations.ai — no API key, no account needed</sub></td>
 </tr>
 </table>
 
@@ -155,6 +114,7 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) 18+
 - npm 9+
 
@@ -193,7 +153,7 @@ Push to main → GitHub Actions builds → Deploys to GitHub Pages
 
 **Setup:**
 1. Go to **Settings → Pages → Source: GitHub Actions**
-2. Push to `main` — the workflow handles everything
+2. Push to `main` — the workflow handles everything automatically
 
 Live at: **[amatias13.github.io/ConvertLab](https://amatias13.github.io/ConvertLab/)**
 
@@ -201,7 +161,7 @@ Live at: **[amatias13.github.io/ConvertLab](https://amatias13.github.io/ConvertL
 
 ## 📬 Feedback System
 
-ConvertLab sends feedback emails directly from the browser using **EmailJS** (free, 200 emails/month, no server needed).
+ConvertLab sends feedback emails directly from the browser using **[EmailJS](https://www.emailjs.com)** — free tier includes 200 emails/month, no server needed.
 
 **Setup in 5 minutes:**
 
@@ -214,15 +174,15 @@ ConvertLab sends feedback emails directly from the browser using **EmailJS** (fr
 ```
 
 4. Copy your **Service ID**, **Template ID** and **Public Key**
-5. Add them to `.env.local`:
+5. Create a `.env.local` file in the root:
 
 ```env
-VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
-VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
-VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-6. Add the same values as **Repository Secrets** on GitHub for production builds.
+> ⚠️ Never commit `.env.local` to version control. It is already ignored by default in `.gitignore`.
 
 ---
 
@@ -230,15 +190,15 @@ VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
 
 <table>
 <tr>
-<td width="80">
+<td width="80" valign="top">
 <img src="https://github.com/Amatias13.png" width="72" height="72" style="border-radius:50%"/>
 </td>
-<td>
+<td valign="top">
 
 **André Matias** — Full Stack Developer · Moita, Setúbal, Portugal 🇵🇹
 
 💼 Software Engineer at [INSTICC](https://insticc.org) &nbsp;·&nbsp; 🚀 Co-founder of Code Lusitan<br/>
-🎓 Computer Engineering — Instituto Politécnico de Setúbal<br/>
+🎓 Software Engineering — Instituto Politécnico de Setúbal<br/>
 📌 React · Node.js · JavaScript · SQL · RESTful APIs · .NET
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-0e0e14?style=flat-square&logo=googlechrome&logoColor=white)](https://amatias13.github.io/Portfolio/)
@@ -253,14 +213,14 @@ VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
 
 ## ☕ Support
 
-ConvertLab is **free, open-source, and ad-free**. If it saves you time:
+ConvertLab is **free, open-source, and ad-free**. If it saves you time, consider supporting:
 
 <a href="https://buymeacoffee.com/andrematiasdev">
-  <img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-ffba3b?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy me a coffee"/>
+  <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy me a coffee" height="41"/>
 </a>
-&nbsp;
+&nbsp;&nbsp;
 <a href="https://github.com/Amatias13/ConvertLab">
-  <img src="https://img.shields.io/badge/Star%20on%20GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="Star on GitHub"/>
+  <img src="https://img.shields.io/github/stars/Amatias13/ConvertLab?style=for-the-badge&logo=github&color=ffba3b&labelColor=181717" alt="Star on GitHub"/>
 </a>
 
 ---

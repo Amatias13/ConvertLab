@@ -1,0 +1,32 @@
+.about-modal {
+  width: 100%;
+  max-width: 640px;
+}
+
+.about-modal-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.about-modal-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.about-modal-content {
+  overflow: auto;
+  flex: 1;
+}
+
+.about-modal-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text3);
+  font-size: 18px;
+}

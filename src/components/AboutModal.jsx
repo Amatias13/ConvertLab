@@ -3,145 +3,13 @@ import { useApp } from '../context/AppContext'
 import { TOOL_META } from '../tools/toolMeta'
 import { ALL_TOOLS } from '../tools/registry'
 
-const icons = {
-  Speed: { path: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', color: 'var(--accent)' },
-  Privacy: { path: 'M12 2L4 6v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V6L12 2z', color: 'var(--accent3)' },
-  Simplicity: { path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z', color: 'var(--accent5)' },
-  Power: { path: 'M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z', color: 'var(--accent4)' },
-}
+// Components
+import Tab from './Tab'
+import ExtLink from './ExtLink'
+import Icon from './Icon'
+import Global from './AboutModal/Global'
 
-const Icon = ({ name }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-    stroke={icons[name].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-    style={{ flexShrink: 0 }}>
-    <path d={icons[name].path} />
-  </svg>
-)
 
-function Tab({ active, onClick, children }) {
-  return (
-    <button onClick={onClick} style={{ padding: '0.45rem 0.9rem', border: 'none', borderRadius: 8, background: active ? 'var(--accent)' : 'transparent', color: active ? '#fff' : 'var(--text2)', fontSize: 13, cursor: 'pointer', fontFamily: 'var(--sans)', transition: 'all 0.15s' }}>
-      {children}
-    </button>
-  )
-}
-
-function ExtLink({ href, children }) {
-  return <a href={href} target="_blank" rel="noreferrer" style={{ color: 'var(--accent5)', textDecoration: 'none' }} onMouseEnter={e => e.currentTarget.style.textDecoration = 'underline'} onMouseLeave={e => e.currentTarget.style.textDecoration = 'none'}>{children} ↗</a>
-}
-
-function AboutGlobal() {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '2rem' }}>
-      {/* Hero */}
-      <div style={{ textAlign: 'center', paddingBottom: '1.25rem', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem', marginBottom: '0.75rem' }}>
-          <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--accent)', boxShadow: '0 0 14px var(--accent)', display: 'inline-block', animation: 'pulse 2s ease-in-out infinite' }} />
-          <span style={{ fontFamily: 'var(--display)', fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-0.02em' }}>ConvertLab</span>
-        </div>
-        <p style={{ fontSize: 14, color: 'var(--text2)', maxWidth: 480, margin: '0 auto', lineHeight: 1.75 }}>
-          A free, open-source developer toolkit that runs entirely in your browser. No accounts, no uploads, no servers — every transformation happens locally on your device.
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-          {['28 Tools', '100% Local', 'Open Source', 'Privacy First', 'PWA Ready', 'Free AI'].map(tag => (
-            <span key={tag} style={{ fontSize: 11, fontWeight: 600, padding: '3px 10px', borderRadius: 100, background: 'var(--accent)1a', color: 'var(--accent)', border: '1px solid var(--accent)33' }}>{tag}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Goals */}
-      <div>
-        <h3 style={{ fontFamily: 'var(--display)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem' }}>🎯 Goals</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-          {[
-            ['Speed', 'Speed', 'Every tool responds instantly — no loading, no waiting.'],
-            ['Privacy', 'Privacy', 'Your data never leaves your browser. Nothing stored on servers.'],
-            ['Simplicity', 'Simplicity', 'Clean, distraction-free UI that gets out of your way.'],
-            ['Power', 'Power', 'Deep functionality for developers, designers, and creators.'],
-          ].map(([iconKey, title, desc]) => (
-            <div key={title} style={{ background: 'var(--bg3)', borderRadius: 10, border: '1px solid var(--border)', padding: '0.85rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, fontWeight: 600 }}>
-                <Icon name={iconKey} />
-                {title}
-              </div>
-              <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.6 }}>{desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Tech */}
-      <div>
-        <h3 style={{ fontFamily: 'var(--display)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem' }}>⚙️ Technologies</h3>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {[
-            { name: 'React 19', color: '#61dafb' },
-            { name: 'Vite 8', color: '#646cff' },
-            { name: 'Pollinations.ai', color: '#3fe8a0' },
-            { name: 'Web Crypto API', color: '#ffba3b' },
-            { name: 'PWA / Workbox', color: '#ff5f7e' },
-            { name: 'GitHub Pages', color: '#8888a8' },
-          ].map(t => (
-            <div key={t.name} style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, padding: '0.4rem 0.8rem', fontSize: 12, fontWeight: 600, color: t.color }}>
-              {t.name}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Roadmap */}
-      <div>
-        <h3 style={{ fontFamily: 'var(--display)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.75rem' }}>🗺 Roadmap</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-          {[
-            { s: 'done', l: 'Dark & Light theme + custom palettes' },
-            { s: 'done', l: 'Favourites & sidebar personalisation' },
-            { s: 'done', l: 'AI Text Enhancer (Pollinations.ai — free)' },
-            { s: 'done', l: 'PWA — install & use offline' },
-            { s: 'done', l: 'Tool usage history' },
-            { s: 'done', l: 'Import/Export settings presets' },
-            { s: 'done', l: 'Keyboard shortcut navigator' },
-            { s: 'plan', l: 'Browser extension' },
-            { s: 'plan', l: 'More AI modes (image, code review)' },
-          ].map(item => {
-            const col = { done: 'var(--accent3)', wip: 'var(--accent4)', plan: 'var(--text3)' }[item.s]
-            const lbl = { done: '✓', wip: '⟳', plan: '◦' }[item.s]
-            return (
-              <div key={item.l} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: 13 }}>
-                <span style={{ color: col, minWidth: 16, fontWeight: 700 }}>{lbl}</span>
-                <span style={{ color: item.s === 'plan' ? 'var(--text3)' : 'var(--text2)' }}>{item.l}</span>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Author — André Matias */}
-      <div style={{ background: 'var(--bg3)', borderRadius: 14, border: '1px solid var(--border)', padding: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-        <div style={{ width: 54, height: 54, borderRadius: '50%', background: 'linear-gradient(135deg, var(--accent), var(--accent2))', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem' }}>
-          👨‍💻
-        </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontWeight: 700, fontSize: 15, fontFamily: 'var(--display)' }}>André Matias</div>
-          <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 1 }}>Full Stack Developer · Moita, Setúbal, Portugal 🇵🇹</div>
-          <div style={{ fontSize: 12.5, color: 'var(--text2)', marginTop: 8, lineHeight: 1.65 }}>
-            Software Engineer at INSTICC and co-founder of Code Lusitan. Passionate about building fast, privacy-first developer tools. Currently expanding into AI development and Cybersecurity.
-          </div>
-          <div style={{ display: 'flex', gap: '0.85rem', marginTop: '0.85rem', flexWrap: 'wrap', fontSize: 13, alignItems: 'center' }}>
-            <ExtLink href="https://github.com/Amatias13">GitHub</ExtLink>
-            <ExtLink href="https://www.linkedin.com/in/andre-matias-dev/">LinkedIn</ExtLink>
-            <ExtLink href="https://amatias13.github.io/Portfolio/">Portfolio</ExtLink>
-            <ExtLink href="https://github.com/Amatias13/ConvertLab">ConvertLab repo</ExtLink>
-            <a href="#" onClick={e => { e.preventDefault(); document.dispatchEvent(new CustomEvent('open-coffee')) }}
-              style={{ color: 'var(--accent4)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-              ☕ Buy me a coffee
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export function ToolAbout({ toolId }) {
   const meta = TOOL_META[toolId]
@@ -214,7 +82,7 @@ export function AboutModal({ toolId }) {
           <button onClick={() => setModal(null)} style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', fontSize: 18 }}>✕</button>
         </div>
         <div style={{ overflow: 'auto', flex: 1 }}>
-          {tab === 'project' ? <AboutGlobal /> : <ToolAbout toolId={toolId} />}
+          {tab === 'project' ? <Global /> : <ToolAbout toolId={toolId} />}
         </div>
       </div>
     </div>

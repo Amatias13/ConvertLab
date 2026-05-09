@@ -1,0 +1,12 @@
+.toolContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.75rem;
+}
+
+.toolDescription {
+  font-size: 13.5px;
+  color: var(--text2);
+  line-height: 1.75;
+}

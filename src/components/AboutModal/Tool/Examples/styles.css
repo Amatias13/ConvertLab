@@ -1,0 +1,40 @@
+.examples-try {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 0.6rem;
+}
+
+.examplesListItem {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: border-color 0.12s;
+}
+
+.examplesListItemLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+
+.examplesListItemValue {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.examplesListItemAction {
+  font-size: 10px;
+  color: var(--accent5);
+  margin-top: 4px;
+}
