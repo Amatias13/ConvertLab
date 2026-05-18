@@ -1,21 +1,9 @@
 import { useState } from "react";
 import { ToolHeader, Btn } from "../components/UI";
 import { hexToRgb, rgbToHex, rgbToHsl, hslToHex } from "../helpers/color";
-
-const PRESETS = [
-  { name: "Indigo", hex: "#7c6dff" },
-  { name: "Coral", hex: "#ff5f7e" },
-  { name: "Mint", hex: "#3fe8a0" },
-  { name: "Sky", hex: "#38b6ff" },
-  { name: "Amber", hex: "#ffba3b" },
-  { name: "Mauve", hex: "#a29bfe" },
-  { name: "Teal", hex: "#00cec9" },
-  { name: "Pink", hex: "#fd79a8" },
-  { name: "Lime", hex: "#badc58" },
-  { name: "Tomato", hex: "#e55039" },
-  { name: "Navy", hex: "#2c3e50" },
-  { name: "Gold", hex: "#f9ca24" },
-];
+import { useApp } from "../context/AppContext";
+import { useClipboard } from "../hooks/useClipboard";
+import { COLOR_PRESETS } from "../constants/tools";
 
 function ColorSwatch({ hex, name, onClick }) {
   const [hovered, setHovered] = useState(false);
@@ -37,7 +25,9 @@ const Section = ({ title, children }) => (
   </div>
 );
 
-export default function ColorTool({ showToast }) {
+export default function ColorTool() {
+  const { showToast } = useApp();
+  const { copy } = useClipboard();
   const [hex, setHex] = useState("#7c6dff");
   const [hexInput, setHexInput] = useState("#7c6dff");
 
@@ -92,16 +82,14 @@ export default function ColorTool({ showToast }) {
         <Btn
           style={{ marginLeft: "auto" }}
           onClick={() => {
-            navigator.clipboard.writeText(hex);
-            showToast("Copied: " + hex);
+            copy(hex, "Copied: " + hex);
           }}
         >
           Copy HEX
         </Btn>
         <Btn
           onClick={() => {
-            navigator.clipboard.writeText(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`);
-            showToast("Copied RGB");
+            copy(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`, "Copied RGB");
           }}
         >
           Copy RGB
@@ -119,7 +107,7 @@ export default function ColorTool({ showToast }) {
           ))}
         </Section>
         <Section title="Preset Swatches">
-          {PRESETS.map((p, i) => (
+          {COLOR_PRESETS.map((p, i) => (
             <ColorSwatch key={i} hex={p.hex} name={p.name} onClick={apply} />
           ))}
         </Section>

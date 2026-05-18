@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
-import { useApp, ACCENT_PALETTES, FONT_OPTIONS } from "../context/AppContext";
+import { useApp } from "../context/AppContext";
+import { ACCENT_PALETTES, FONT_OPTIONS } from "../constants/theme";
 import { ALL_TOOLS } from "../data/tools";
+import { STORAGE_KEYS } from "../constants/app";
 
 function Section({ title, children }) {
   return (
@@ -283,7 +285,7 @@ export function ProfileModal() {
               {history.length > 0 && (
                 <button
                   onClick={() => {
-                    localStorage.removeItem("cl-history");
+                    localStorage.removeItem(STORAGE_KEYS.HISTORY);
                     showToast("History cleared");
                     setModal(null);
                   }}
@@ -330,7 +332,7 @@ export function ProfileModal() {
                 <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: "0.75rem" }}>Reset all settings to defaults. This cannot be undone.</div>
                 <button
                   onClick={() => {
-                    ["cl-theme", "cl-profile", "cl-profile-hash", "cl-favs", "cl-history", "cl-sidebar", "cl-notifs"].forEach((k) => localStorage.removeItem(k));
+                    Object.values(STORAGE_KEYS).forEach((k) => localStorage.removeItem(k));
                     showToast("All settings reset — reloading…", "warn");
                     setTimeout(() => window.location.reload(), 1200);
                   }}

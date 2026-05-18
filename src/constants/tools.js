@@ -20,6 +20,9 @@
  *  - Color Tool (presets)
  *  - Image Tool (filter map)
  *  - Sidebar (action definitions)
+ *  - CSV (delimiter options)
+ *  - Hashing (algorithm list)
+ *  - AI Models (model list)
  */
 
 // ─── Password Generator ───────────────────────────────────────────
@@ -178,6 +181,9 @@ export const SQL_KEYWORDS = [
   "DECLARE",
 ];
 
+// ─── SQL Clauses (for syntax highlighting) ─────────────────────────────────
+export const SQL_CLAUSES = ["SELECT", "FROM", "WHERE", "LEFT JOIN", "RIGHT JOIN", "INNER JOIN", "OUTER JOIN", "FULL JOIN", "JOIN", "GROUP BY", "ORDER BY", "HAVING", "LIMIT", "OFFSET", "UNION ALL", "UNION", "INSERT INTO", "VALUES", "SET", "ON"];
+
 // ─── Lorem Ipsum word bank ────────────────────────────────────────
 export const LOREM_WORDS =
   "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum".split(
@@ -197,6 +203,9 @@ export const AI_MODES = [
   { id: "translate", label: "🇵🇹 PT", system: "Translate to European Portuguese. Return ONLY the translation." },
   { id: "fix", label: "🔧 Fix grammar", system: "Fix grammar and spelling only. Return ONLY the corrected text." },
 ];
+
+// ─── AI Models ─────────────────────────────────────────────────
+export const AI_MODELS = [{ id: "openai", label: "GPT-4o" }];
 
 // ─── Coffee options ───────────────────────────────────────────────
 export const COFFEE_OPTIONS = [
@@ -251,4 +260,32 @@ export const SIDEBAR_ACTIONS = [
   { key: "feedback", icon: "💬", title: "Send feedback" },
   { key: "about", icon: "ℹ", title: "About ConvertLab" },
   { key: "coffee", icon: "☕", title: "Buy me a coffee" },
+];
+
+// ─── CSV Delimiters ───────────────────────────────────────────────
+export const DELIMITERS = [
+  { label: ",", value: "," },
+  { label: ";", value: ";" },
+  { label: "Tab", value: "\t" },
+  { label: "|", value: "|" },
+];
+
+// ─── Hashing algorithms ───────────────────────────────────────────
+export const ALGOS = ["SHA-1", "SHA-256", "SHA-384", "SHA-512"];
+
+// ─── JWT Part Colors ─────────────────────────────────────────────
+export const PARTCOLORS = {
+  header: { bg: "#ff5f7e0a", label: "#ff5f7e", name: "Header" },
+  payload: { bg: "#7c6dff0a", label: "#7c6dff", name: "Payload" },
+  sig: { bg: "#3fe8a00a", label: "#3fe8a0", name: "Signature" },
+};
+
+// ─── Number Formatter Locales ─────────────────────────────────────
+export const LOCALES = [
+  { label: "PT (1.234,56)", locale: "pt-PT" },
+  { label: "EN (1,234.56)", locale: "en-US" },
+  { label: "DE (1.234,56)", locale: "de-DE" },
+  { label: "FR (1 234,56)", locale: "fr-FR" },
+  { label: "IN (1,23,456)", locale: "en-IN" },
+  { label: "CH (1'234.56)", locale: "de-CH" },
 ];

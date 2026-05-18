@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react'
-import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from '../components/UI'
+import { useState, useRef, useEffect } from "react";
+import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
 
 const PLACEHOLDER = `<!DOCTYPE html>
 <html>
@@ -15,30 +15,30 @@ const PLACEHOLDER = `<!DOCTYPE html>
   <p>Edit the HTML on the left to see it render here.</p>
   <button onclick="alert('It works!')">Click me</button>
 </body>
-</html>`
+</html>`;
 
 export default function HtmlTool() {
-  const [input, setInput] = useState(PLACEHOLDER)
-  const [bg, setBg] = useState('white')
-  const iframeRef = useRef(null)
+  const [input, setInput] = useState(PLACEHOLDER);
+  const [bg, setBg] = useState("white");
+  const iframeRef = useRef(null);
 
   useEffect(() => {
-    const blob = new Blob([input], { type: 'text/html' })
-    const url = URL.createObjectURL(blob)
-    if (iframeRef.current) iframeRef.current.src = url
-    return () => URL.revokeObjectURL(url)
-  }, [input])
+    const blob = new Blob([input], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    if (iframeRef.current) iframeRef.current.src = url;
+    return () => URL.revokeObjectURL(url);
+  }, [input]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
+    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
       <ToolHeader title="HTML Preview" desc="Render HTML in a sandboxed iframe" />
 
       <OptionsBar>
         <OptLabel>Preview bg:</OptLabel>
         <OptGroup>
-          {['white', '#1a1a2e', 'transparent'].map(c => (
+          {["white", "#1a1a2e", "transparent"].map((c) => (
             <OptBtn key={c} active={bg === c} onClick={() => setBg(c)}>
-              {c === 'white' ? 'Light' : c === 'transparent' ? 'None' : 'Dark'}
+              {c === "white" ? "Light" : c === "transparent" ? "None" : "Dark"}
             </OptBtn>
           ))}
         </OptGroup>
@@ -52,13 +52,9 @@ export default function HtmlTool() {
 
         <Panel>
           <PanelLabel>Preview</PanelLabel>
-          <iframe
-            ref={iframeRef}
-            sandbox="allow-scripts"
-            style={{ flex: 1, border: 'none', background: bg }}
-          />
+          <iframe ref={iframeRef} sandbox="allow-scripts" style={{ flex: 1, border: "none", background: bg }} />
         </Panel>
       </Panels>
     </div>
-  )
+  );
 }

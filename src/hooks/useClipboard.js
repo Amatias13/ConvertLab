@@ -11,20 +11,23 @@
  *   copy('text to copy')          // shows "Copied" toast
  *   copy('text', 'Custom label') // shows "Custom label" toast
  */
-import { useCallback } from 'react'
-import { useApp } from '../context/AppContext'
+import { useCallback } from "react";
+import { useApp } from "../context/AppContext";
 
 /**
  * Returns a `copy(text, label?)` function that writes to the clipboard
  * and fires a toast notification.
  */
 export function useClipboard() {
-  const { showToast } = useApp()
+  const { showToast } = useApp();
 
-  const copy = useCallback((text, label = 'Copied') => {
-    navigator.clipboard.writeText(String(text))
-    showToast(label)
-  }, [showToast])
+  const copy = useCallback(
+    (text, label = "Copied") => {
+      navigator.clipboard.writeText(String(text));
+      showToast(label);
+    },
+    [showToast],
+  );
 
-  return { copy }
+  return { copy };
 }
