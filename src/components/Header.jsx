@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { ALL_TOOLS } from "../data/tools";
-import { NotificationsPanel } from "./Modals";
+import NotificationsPanel from "./NotificationsPanel";
 
 export default function Header({ activeTool, setActiveTool, searchOpen, setSearchOpen, searchInputRef }) {
   const { theme, toggleTheme, unreadCount, setModal, profile } = useApp();

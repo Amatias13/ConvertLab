@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useCallback } from "react";
-import { NOTIFS_INIT } from "../constants/theme";
+import { NOTIFICATIONS_INIT } from "../constants/theme";
 import { persist } from "../helpers/util";
 import { STORAGE_KEYS } from "../constants/app";
 
@@ -8,9 +8,9 @@ const NotificationsContext = createContext(null);
 export function NotificationsProvider({ children }) {
   const [notifications, setNotifications] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS) || "null") || NOTIFS_INIT;
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS) || "null") || NOTIFICATIONS_INIT;
     } catch {
-      return NOTIFS_INIT;
+      return NOTIFICATIONS_INIT;
     }
   });
 

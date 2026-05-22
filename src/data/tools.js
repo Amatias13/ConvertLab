@@ -337,3 +337,22 @@ export const REGISTRY = [
 ];
 
 export const ALL_TOOLS = REGISTRY.flatMap((g) => g.items);
+
+// ALL_TOOLS_ENRICHED — each tool entry merged with its META data.
+// Use this instead of cross-referencing ALL_TOOLS and META separately.
+// META and REGISTRY are kept as-is for backwards compatibility.
+export const ALL_TOOLS_ENRICHED = ALL_TOOLS.map((tool) => ({
+  ...tool,
+  ...(META[tool.id] || {}),
+}));
+
+export const SHORTCUTS = [
+  { keys: ["⌘", "K"], desc: "Search tools" },
+  { keys: ["?"], desc: "Show keyboard shortcuts" },
+  { keys: ["1", "–", "9"], desc: "Jump to tool by sidebar position" },
+  { keys: ["⌘", "B"], desc: "Toggle sidebar open/close" },
+  { keys: ["⌘", "D"], desc: "Toggle dark / light mode" },
+  { keys: ["⌘", ","], desc: "Open settings / profile" },
+  { keys: ["⌘", "⇧", "F"], desc: "Favourite the current tool" },
+  { keys: ["Esc"], desc: "Close modals / clear search" },
+];

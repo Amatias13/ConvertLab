@@ -1,15 +1,17 @@
 import { useState, useRef, useCallback } from "react";
 import { AppProvider, useApp } from "./context/AppContext";
+import { DEFAULT_TOOL } from "./constants/app";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import AboutModal from "./modules/AboutModal";
 import { FeedbackModal, CoffeeModal, ToastStack } from "./components/Modals";
 import { ProfileModal } from "./components/ProfileModal";
-import { useKeyboardShortcuts, ShortcutsModal } from "./components/Shortcuts";
+import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
+import { ShortcutsModal } from "./components/Shortcuts";
 import { TOOL_MAP } from "./features";
 
 function AppInner() {
-  const [activeTool, setActiveToolState] = useState("json");
+  const [activeTool, setActiveToolState] = useState(DEFAULT_TOOL);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const searchInputRef = useRef(null);

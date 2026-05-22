@@ -74,10 +74,3 @@ export const STATUS_COLORS = {
   info: "var(--accent5)",
 };
 
-export const NOTIFS_INIT = [
-  { id: 1, type: "new", title: "Welcome to ConvertLab!", body: "Built by Andre Matias — free, open-source, 28+ tools.", time: Date.now() - 3600000, read: false },
-  { id: 2, type: "new", title: "AI powered by Pollinations", body: "The AI tool uses Pollinations.ai — 100% free, no key needed.", time: Date.now() - 7200000, read: false },
-  { id: 3, type: "tip", title: "Favourite your tools", body: "Click the star on any tool to pin it to the sidebar.", time: Date.now() - 86400000, read: false },
-  { id: 4, type: "tip", title: "Keyboard shortcuts", body: "Press Cmd+K to search, 1-9 to jump to tools, ? for all shortcuts.", time: Date.now() - 172800000, read: true },
-  { id: 5, type: "update", title: "v2.0 launched", body: "PWA, shortcuts, custom themes, profiles, Pollinations AI and more.", time: Date.now() - 259200000, read: true },
-];

@@ -27,7 +27,10 @@ import NumberFormatterTool from "./NumberFormatterTool";
 import YamlJsonTool from "./YamlJsonTool";
 import TextStatsTool from "./TextStatsTool";
 
-const TOOL_MAP = {
+// Single source of truth for tool ID → component mapping.
+// Consumed by App.jsx via TOOL_MAP and by data/tools.js via TOOL_COMPONENTS
+// when merging registries in the future.
+export const TOOL_COMPONENTS = {
   ai: AiTool,
   json: JsonTool,
   base64: Base64Tool,
@@ -58,4 +61,5 @@ const TOOL_MAP = {
   yaml: YamlJsonTool,
 };
 
-export { TOOL_MAP };
+// Backwards-compat alias used by App.jsx
+export const TOOL_MAP = TOOL_COMPONENTS;
