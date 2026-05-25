@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, Btn, CodeArea } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 
 function parseMarkdown(md) {
@@ -67,14 +66,13 @@ const greet = name => \`Hello, \${name}!\`
 `;
 
 export default function MarkdownTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState(PLACEHOLDER);
 
   const wordCount = input.trim().split(/\s+/).filter(Boolean).length;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Markdown Preview" desc="Real-time Markdown rendering">
         <Btn
           onClick={() => {

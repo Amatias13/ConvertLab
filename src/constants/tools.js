@@ -112,16 +112,6 @@ export const ENTITY_MAP = {
   "‣": "&#8227;",
 };
 
-// ─── Number Formatter ─────────────────────────────────────────────
-export const NUMBER_LOCALES = [
-  { label: "PT (1.234,56)", locale: "pt-PT" },
-  { label: "EN (1,234.56)", locale: "en-US" },
-  { label: "DE (1.234,56)", locale: "de-DE" },
-  { label: "FR (1 234,56)", locale: "fr-FR" },
-  { label: "IN (1,23,456)", locale: "en-IN" },
-  { label: "CH (1'234.56)", locale: "de-CH" },
-];
-
 // ─── Cron Presets ─────────────────────────────────────────────────
 export const CRON_PRESETS = [
   { label: "Every minute", value: "* * * * *" },
@@ -288,4 +278,12 @@ export const LOCALES = [
   { label: "FR (1 234,56)", locale: "fr-FR" },
   { label: "IN (1,23,456)", locale: "en-IN" },
   { label: "CH (1'234.56)", locale: "de-CH" },
+];
+
+// ─── Number Base Converter ────────────────────────────────────────
+export const BASE_OPTIONS = [
+  { id: "dec", label: "Decimal", sub: "base 10", radix: 10 },
+  { id: "bin", label: "Binary", sub: "base 2", radix: 2 },
+  { id: "oct", label: "Octal", sub: "base 8", radix: 8 },
+  { id: "hex", label: "Hex", sub: "base 16", radix: 16 },
 ];

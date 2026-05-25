@@ -1,4 +1,5 @@
 import React from "react";
+import { useApp } from "../../context/AppContext";
 import { personal } from "../../data/about";
 import "./styles.css";
 import ExtLink from "../../components/ExtLink";
@@ -7,6 +8,7 @@ import ExtLink from "../../components/ExtLink";
  * The Me component is a part of the About modal's "Global" section, designed to provide users with information about the creator of the project. It displays a personal avatar, name, role, location, and a brief description of the creator's background and interests. Additionally, it includes links to the creator's GitHub, LinkedIn, portfolio, and project repository, allowing users to easily connect and explore more of their work. The component also features a "Buy me a coffee" link that triggers a custom event when clicked, providing an opportunity for users to support the creator. The Me component is structured to be visually appealing and informative, giving users insight into the person behind the project while encouraging engagement through external links.
  */
 function Me() {
+  const { setModal } = useApp();
   return (
     <div className="me">
       <div className="me-avatar">
@@ -28,7 +30,7 @@ function Me() {
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              document.dispatchEvent(new CustomEvent("open-coffee"));
+              setModal("coffee");
             }}
             className="me-coffee-link"
           >

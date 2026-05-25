@@ -1,10 +1,8 @@
 import { useState, useCallback } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea, StatusBadge } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 
 export default function JsonTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
@@ -53,7 +51,7 @@ export default function JsonTool() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="JSON Formatter & Validator" desc="Format, minify and validate JSON">
         <Btn onClick={minify}>Minify</Btn>
         <Btn onClick={format} primary>

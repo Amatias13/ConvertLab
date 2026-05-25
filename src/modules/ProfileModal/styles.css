@@ -1,0 +1,407 @@
+/* ─── Modal Overrides ─────────────────────────────── */
+.pm-box {
+  width: 100%;
+  max-width: 580px;
+}
+
+/* ─── Header ──────────────────────────────────────── */
+.pm-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.pm-header-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.pm-header-tabs {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+
+.pm-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text3);
+  font-size: 18px;
+  line-height: 1;
+  margin-left: 0.5rem;
+}
+
+.pm-body {
+  overflow: auto;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+/* ─── Theme Picker ────────────────────────────────── */
+.pm-theme-row {
+  display: flex;
+  gap: 8px;
+}
+
+.pm-theme-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+  border: 2px solid var(--border);
+}
+
+.pm-theme-btn.active {
+  border-color: var(--accent);
+}
+
+.pm-theme-btn-icon {
+  font-size: 1.4rem;
+}
+
+.pm-theme-btn-label {
+  font-size: 12px;
+  font-family: var(--sans);
+  font-weight: 400;
+}
+
+.pm-theme-btn.active .pm-theme-btn-label {
+  font-weight: 700;
+}
+
+/* ─── Palette Grid ────────────────────────────────── */
+.pm-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.pm-palette-btn {
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: var(--bg3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.15s;
+}
+
+.pm-palette-btn.active {
+  background: var(--bg4);
+}
+
+.pm-palette-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.pm-palette-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pm-palette-name {
+  font-size: 12px;
+  color: var(--text2);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+
+.pm-palette-btn.active .pm-palette-name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ─── Custom Palette ──────────────────────────────── */
+.pm-custom-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.pm-custom-label {
+  font-size: 10px;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+
+.pm-custom-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.pm-color-input {
+  width: 32px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.pm-text-input-mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  flex: 1;
+}
+
+/* ─── Font Grid ───────────────────────────────────── */
+.pm-font-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.pm-font-btn {
+  padding: 0.6rem 0.75rem;
+  border-radius: 9px;
+  border: 2px solid var(--border);
+  background: var(--bg3);
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text2);
+  transition: all 0.15s;
+}
+
+.pm-font-btn.active {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* ─── Font Size ───────────────────────────────────── */
+.pm-fontsize-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pm-fontsize-mono {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text);
+  min-width: 40px;
+}
+
+.pm-fontsize-reset {
+  font-size: 11px;
+  color: var(--text3);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
+.pm-preview {
+  margin-top: 8px;
+  padding: 0.6rem 0.85rem;
+  background: var(--bg3);
+  border-radius: 8px;
+  color: var(--text2);
+}
+
+/* ─── Profile Tab ─────────────────────────────────── */
+.pm-hint {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 6px;
+}
+
+.pm-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pm-text {
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.pm-row {
+  display: flex;
+  gap: 8px;
+}
+
+.pm-btn-primary {
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.pm-btn-secondary {
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text2);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+.pm-error {
+  font-size: 12px;
+  color: var(--accent2);
+}
+
+.pm-note {
+  font-size: 11px;
+  color: var(--text3);
+  line-height: 1.5;
+}
+
+/* ─── History Tab ─────────────────────────────────── */
+.pm-empty {
+  font-size: 13px;
+  color: var(--text3);
+  padding: 1rem 0;
+}
+
+.pm-history-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg3);
+  border-radius: 9px;
+  border: 1px solid var(--border);
+}
+
+.pm-history-rank {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text3);
+  min-width: 18px;
+}
+
+.pm-history-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pm-history-label {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.pm-bar-track {
+  width: 80px;
+  height: 4px;
+  background: var(--bg4);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.pm-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.pm-history-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  min-width: 28px;
+  text-align: right;
+}
+
+.pm-history-date {
+  font-size: 10px;
+  color: var(--text3);
+}
+
+.pm-btn-danger {
+  font-size: 12px;
+  color: var(--accent2);
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--accent2) 20%, transparent);
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
+/* ─── Presets Tab ─────────────────────────────────── */
+.pm-presets-desc {
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.pm-code-inline {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--bg3);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.pm-btn-export {
+  padding: 0.55rem 1.1rem;
+  border-radius: 9px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pm-btn-import {
+  padding: 0.55rem 1.1rem;
+  border-radius: 9px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pm-btn-reset {
+  padding: 0.55rem 1.1rem;
+  border-radius: 9px;
+  border: 1px solid color-mix(in srgb, var(--accent2) 27%, transparent);
+  background: transparent;
+  color: var(--accent2);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}

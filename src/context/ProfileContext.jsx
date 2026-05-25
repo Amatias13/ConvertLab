@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { DEFAULT_PROFILE, ACCENT_PALETTES, FONT_OPTIONS } from "../constants/theme";
 import { persist, hashString } from "../helpers/util";
+import { APP_VERSION } from "../constants/app";
 import { sanitizeProfile } from "../helpers/profile";
 import { darken } from "../helpers/color";
 import { STORAGE_KEYS } from "../constants/app";
@@ -24,9 +25,9 @@ export function ProfileProvider({ children, showToast }) {
 
   const [profileHash, setProfileHash] = useState(() => localStorage.getItem(STORAGE_KEYS.PROFILE_HASH) || "");
   const [sidebarOpen, setSidebarOpen] = useState(() => localStorage.getItem(STORAGE_KEYS.SIDEBAR) !== "false");
-  const [favourites, setFavourites] = useState(() => {
+  const [favorites, setFavorites] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVOURITES) || "[]");
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVORITES) || "[]");
     } catch {
       return [];
     }
@@ -96,9 +97,9 @@ export function ProfileProvider({ children, showToast }) {
   );
 
   const toggleFav = useCallback((id) => {
-    setFavourites((prev) => {
+    setFavorites((prev) => {
       const next = prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id];
-      persist(STORAGE_KEYS.FAVOURITES, next);
+      persist(STORAGE_KEYS.FAVORITES, next);
       return next;
     });
   }, []);
@@ -115,12 +116,12 @@ export function ProfileProvider({ children, showToast }) {
 
   const exportPresets = useCallback(() => {
     const data = {
-      version: "2.0",
+      version: APP_VERSION,
       exportedAt: new Date().toISOString(),
       exportedBy: profile.displayName || "ConvertLab User",
       profile,
       theme, // ← now correctly reads from useTheme()
-      favourites,
+      favorites,
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -130,7 +131,7 @@ export function ProfileProvider({ children, showToast }) {
     }).click();
     URL.revokeObjectURL(url);
     showToast("Presets exported!", "success");
-  }, [profile, theme, favourites, showToast]);
+  }, [profile, theme, favorites, showToast]);
 
   const importPresets = useCallback(
     (file) => {
@@ -142,9 +143,9 @@ export function ProfileProvider({ children, showToast }) {
           if (data.theme === "dark" || data.theme === "light") {
             setThemeState(data.theme); // ← calls useTheme()'s setter directly
           }
-          if (Array.isArray(data.favourites)) {
-            setFavourites(data.favourites);
-            persist(STORAGE_KEYS.FAVOURITES, data.favourites);
+          if (Array.isArray(data.favorites)) {
+            setFavorites(data.favorites);
+            persist(STORAGE_KEYS.FAVORITES, data.favorites);
           }
           showToast("Presets imported from " + (data.exportedBy || "file") + "!", "success");
         } catch {
@@ -166,7 +167,7 @@ export function ProfileProvider({ children, showToast }) {
         profileHash,
         sidebarOpen,
         setSidebarOpen,
-        favourites,
+        favorites,
         toggleFav,
         history,
         recordUsage,

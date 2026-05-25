@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, CodeArea } from "../components/UI";
+import { READING_WPM } from "../constants/app";
 
 function analyzeText(text) {
   if (!text) return null;
@@ -9,7 +10,7 @@ function analyzeText(text) {
   const chars = text.length;
   const charsNoSpace = text.replace(/\s/g, "").length;
   const lines = text.split("\n");
-  const readingTime = Math.ceil(words.length / 238);
+  const readingTime = Math.ceil(words.length / READING_WPM);
 
   const freq = {};
   words.forEach((w) => {
@@ -25,22 +26,12 @@ function analyzeText(text) {
   return { chars, charsNoSpace, words: words.length, sentences: sentences.length, paragraphs: paragraphs.length, lines: lines.length, unique, avgWordLen, readingTime, topWords };
 }
 
-function StatCard({ label, value, sub, color }) {
-  return (
-    <div style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10, padding: "0.85rem 1rem" }}>
-      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)", marginBottom: 4 }}>{label}</div>
-      <div style={{ fontFamily: "var(--mono)", fontSize: "1.4rem", fontWeight: 500, color: color || "var(--text)" }}>{value}</div>
-      {sub && <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 2 }}>{sub}</div>}
-    </div>
-  );
-}
-
 export default function TextStatsTool() {
   const [input, setInput] = useState("");
   const stats = useMemo(() => analyzeText(input), [input]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Text Statistics" desc="Analyze text — word count, reading time, frequency and more" />
 
       <Panels>
@@ -63,7 +54,7 @@ export default function TextStatsTool() {
                   <StatCard label="Paragraphs" value={stats.paragraphs.toLocaleString()} />
                   <StatCard label="Lines" value={stats.lines.toLocaleString()} />
                   <StatCard label="Avg word" value={stats.avgWordLen} sub="chars/word" />
-                  <StatCard label="Reading time" value={`~${stats.readingTime}m`} sub="at 238 wpm" color="var(--accent3)" />
+                  <StatCard label="Reading time" value={`~${stats.readingTime}m`} sub={`at ${READING_WPM} wpm`} color="var(--accent3)" />
                 </div>
 
                 {stats.topWords.length > 0 && (

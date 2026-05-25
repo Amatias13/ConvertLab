@@ -1,4 +1,5 @@
 import { ALL_TOOLS } from "../data/tools";
+import { GITHUB_URL } from "../constants/app";
 
 const icons = {
   Speed: { path: "M13 2L3 14h9l-1 8 10-12h-9l1-8z", color: "var(--accent)" },
@@ -25,7 +26,7 @@ const goals = [
 
 const roadmap = [
   { s: "done", l: "Dark & Light theme + custom palettes" },
-  { s: "done", l: "Favourites & sidebar personalisation" },
+  { s: "done", l: "Favorites & sidebar personalisation" },
   { s: "done", l: "AI Text Enhancer (Pollinations.ai — free)" },
   { s: "done", l: "PWA — install & use offline" },
   { s: "done", l: "Tool usage history" },
@@ -46,7 +47,7 @@ const personal = {
     { label: "GitHub", url: "https://github.com/Amatias13" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/andre-matias-dev/" },
     { label: "Portfolio", url: "https://amatias13.github.io/Portfolio/" },
-    { label: "ConvertLab repo", url: "https://github.com/Amatias13/ConvertLab" },
+    { label: "ConvertLab repo", url: GITHUB_URL },
   ],
 };
 

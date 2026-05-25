@@ -35,7 +35,7 @@ export default function Base64Tool() {
   const ratio = inSize ? ((outSize / inSize) * 100).toFixed(0) + "%" : "—";
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Base64 Encoder / Decoder" desc="Encode text to Base64 and back">
         <Btn onClick={encode} primary>
           Encode →

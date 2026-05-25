@@ -30,7 +30,7 @@ export default function HtmlTool() {
   }, [input]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="HTML Preview" desc="Render HTML in a sandboxed iframe" />
 
       <OptionsBar>

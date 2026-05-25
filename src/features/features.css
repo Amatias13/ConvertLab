@@ -1,0 +1,197 @@
+/* ─── Shared Feature Tool Patterns ───────────────────────────────── */
+/* Import in individual feature files: import "./features.css" */
+
+/* Flex column fill — used inside tool panels for scrollable content */
+.tool-scroll {
+  flex: 1;
+  overflow: auto;
+}
+
+.tool-scroll-pad {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.tool-scroll-pad-lg {
+  flex: 1;
+  overflow: auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* ─── Cards ─────────────────────────────────────────────────────── */
+.tool-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem;
+}
+
+.tool-card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 8px;
+}
+
+/* ─── Form fields ────────────────────────────────────────────────── */
+.tool-field-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+
+/* ─── Mono input ─────────────────────────────────────────────────── */
+.mono-input {
+  font-family: var(--mono);
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+}
+
+/* ─── Result / info rows ─────────────────────────────────────────── */
+.result-row {
+  background: var(--bg3);
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.result-row-key {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.result-row-val {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  word-break: break-all;
+}
+
+/* ─── Preset tag buttons ─────────────────────────────────────────── */
+.preset-btn {
+  padding: 0.22rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text3);
+  font-size: 11px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.12s;
+}
+
+.preset-btn:hover {
+  background: var(--bg3);
+  color: var(--text);
+  border-color: var(--border2);
+}
+
+/* ─── Strength / progress bar ────────────────────────────────────── */
+.strength-bar-track {
+  flex: 1;
+  height: 3px;
+  background: var(--bg4);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.strength-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: all 0.3s;
+}
+
+/* ─── Password / result item ─────────────────────────────────────── */
+.pwd-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0.75rem;
+  background: var(--bg2);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+
+.pwd-item:hover {
+  border-color: var(--border2);
+}
+
+.pwd-value {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  word-break: break-all;
+  color: var(--text);
+}
+
+.pwd-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── Regex specific ─────────────────────────────────────────────── */
+.regex-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+}
+
+.regex-slash {
+  color: var(--accent2);
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.regex-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text);
+  padding: 0;
+  width: 100%;
+}
+
+.regex-flags {
+  width: 36px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent4);
+  padding: 0;
+}

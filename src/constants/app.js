@@ -15,7 +15,7 @@ export const STORAGE_KEYS = {
   PROFILE: "cl-profile",
   PROFILE_HASH: "cl-profile-hash",
   SIDEBAR: "cl-sidebar",
-  FAVOURITES: "cl-favs",
+  FAVORITES: "cl-favs",
   HISTORY: "cl-history",
   NOTIFICATIONS: "cl-notifs",
 };
@@ -35,3 +35,15 @@ export const TOAST_DURATION = 2800;
 
 // ─── Reading speed (words per minute) ────────────────────────────
 export const READING_WPM = 238;
+
+// ─── Keyboard Shortcuts ───────────────────────────────────────────
+export const SHORTCUTS = [
+  { keys: ["⌘", "K"], desc: "Search tools" },
+  { keys: ["?"], desc: "Show keyboard shortcuts" },
+  { keys: ["1", "–", "9"], desc: "Jump to tool by sidebar position" },
+  { keys: ["⌘", "B"], desc: "Toggle sidebar open/close" },
+  { keys: ["⌘", "D"], desc: "Toggle dark / light mode" },
+  { keys: ["⌘", ","], desc: "Open settings / profile" },
+  { keys: ["⌘", "⇧", "F"], desc: "Favourite the current tool" },
+  { keys: ["Esc"], desc: "Close modals / clear search" },
+];

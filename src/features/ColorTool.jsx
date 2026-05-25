@@ -1,32 +1,12 @@
 import { useState } from "react";
 import { ToolHeader, Btn } from "../components/UI";
 import { hexToRgb, rgbToHex, rgbToHsl, hslToHex } from "../helpers/color";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { COLOR_PRESETS } from "../constants/tools";
-
-function ColorSwatch({ hex, name, onClick }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div onClick={() => onClick(hex)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid var(--border)", cursor: "pointer", transform: hovered ? "scale(1.03)" : "scale(1)", transition: "transform 0.15s" }}>
-      <div style={{ height: 64, background: hex }} />
-      <div style={{ padding: "0.5rem 0.7rem", background: "var(--bg2)" }}>
-        {name && <div style={{ fontSize: 11, fontWeight: 500, color: "var(--text)" }}>{name}</div>}
-        <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--text3)" }}>{hex}</div>
-      </div>
-    </div>
-  );
-}
-
-const Section = ({ title, children }) => (
-  <div style={{ marginBottom: "1.5rem" }}>
-    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)", marginBottom: "0.75rem" }}>{title}</div>
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(110px,1fr))", gap: 10 }}>{children}</div>
-  </div>
-);
+import Section from "../components/Section";
+import ColorSwatch from "../components/ColorSwatch";
 
 export default function ColorTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [hex, setHex] = useState("#7c6dff");
   const [hexInput, setHexInput] = useState("#7c6dff");
@@ -60,7 +40,7 @@ export default function ColorTool() {
   ];
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Color Picker & Converter" desc="Convert between HEX, RGB, HSL and explore palettes" />
       <div style={{ padding: "0.6rem 1rem", borderBottom: "1px solid var(--border)", display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
         <input type="color" value={hex} onChange={(e) => apply(e.target.value)} style={{ width: 36, height: 30, border: "none", background: "none", cursor: "pointer", padding: 0, borderRadius: 6 }} />

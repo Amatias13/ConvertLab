@@ -1,9 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn } from "../components/UI";
-import { useApp } from "../context/AppContext";
+import { IMAGE_FILTERS } from "../constants/tools";
 
 export default function ImageTool() {
-  const { showToast } = useApp();
   const [img, setImg] = useState(null);
   const [filter, setFilter] = useState("none");
   const [format, setFormat] = useState("image/png");
@@ -27,7 +26,7 @@ export default function ImageTool() {
     canvas.width = img.width;
     canvas.height = img.height;
     const ctx = canvas.getContext("2d");
-    ctx.filter = { none: "none", grayscale: "grayscale(100%)", sepia: "sepia(100%)", invert: "invert(100%)", blur: "blur(3px)", brightness: "brightness(1.4)", contrast: "contrast(1.5)" }[filter];
+    ctx.filter = IMAGE_FILTERS[filter];
     ctx.drawImage(img.el, 0, 0);
   }, [img, filter]);
 
@@ -47,7 +46,7 @@ export default function ImageTool() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Image Tools" desc="Convert, filter and transform images in the browser">
         {img && (
           <>
@@ -75,15 +74,14 @@ export default function ImageTool() {
           </OptGroup>
           <OptLabel style={{ marginLeft: "0.75rem" }}>Filter:</OptLabel>
           <OptGroup>
-            {[
-              ["none", "None"],
-              ["grayscale", "Grayscale"],
-              ["sepia", "Sepia"],
-              ["invert", "Invert"],
-              ["blur", "Blur"],
-              ["brightness", "Bright"],
-              ["contrast", "Contrast"],
-            ].map(([v, l]) => (
+            {Object.entries({
+              none: "None",
+              ...Object.fromEntries(
+                Object.keys(IMAGE_FILTERS)
+                  .filter((k) => k !== "none")
+                  .map((k) => [k, k[0].toUpperCase() + k.slice(1)]),
+              ),
+            }).map(([v, l]) => (
               <OptBtn key={v} active={filter === v} onClick={() => setFilter(v)}>
                 {l}
               </OptBtn>

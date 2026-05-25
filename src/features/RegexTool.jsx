@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { ToolHeader, PanelLabel } from "../components/UI";
+import "./features.css";
 
 export default function RegexTool() {
   const [pattern, setPattern] = useState("");
@@ -28,15 +29,15 @@ export default function RegexTool() {
   const isArr = Array.isArray(highlighted);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Regex Tester" desc="Test regular expressions with live highlighting" />
 
       <div style={{ padding: "0.75rem 1rem", borderBottom: "1px solid var(--border)", display: "flex", gap: "0.5rem", alignItems: "center" }}>
-        <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 4, background: "var(--bg3)", border: "1px solid var(--border2)", borderRadius: 8, padding: "0.4rem 0.75rem" }}>
-          <span style={{ color: "var(--accent2)", fontFamily: "var(--mono)", fontSize: 14, fontWeight: 500 }}>/</span>
-          <input value={pattern} onChange={(e) => setPattern(e.target.value)} placeholder="pattern" style={{ flex: 1, background: "transparent", border: "none", outline: "none", fontFamily: "var(--mono)", fontSize: 14, color: "var(--text)", padding: 0, width: "100%" }} />
-          <span style={{ color: "var(--accent2)", fontFamily: "var(--mono)", fontSize: 14, fontWeight: 500 }}>/</span>
-          <input value={flags} onChange={(e) => setFlags(e.target.value)} style={{ width: 36, background: "transparent", border: "none", outline: "none", fontFamily: "var(--mono)", fontSize: 14, color: "var(--accent4)", padding: 0 }} />
+        <div className="regex-input-wrap">
+          <span className="regex-slash">/</span>
+          <input value={pattern} onChange={(e) => setPattern(e.target.value)} placeholder="pattern" className="regex-input" />
+          <span className="regex-slash">/</span>
+          <input value={flags} onChange={(e) => setFlags(e.target.value)} className="regex-flags" />
         </div>
         <span style={{ fontSize: 11, color: matches.length ? "var(--accent3)" : "var(--text3)", whiteSpace: "nowrap" }}>{pattern ? `${matches.length} match${matches.length !== 1 ? "es" : ""}` : ""}</span>
       </div>

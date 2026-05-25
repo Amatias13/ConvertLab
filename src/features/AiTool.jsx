@@ -4,6 +4,7 @@ import { callAI, hasSK } from "../services/pollinations";
 import { AI_MODELS, AI_MODES } from "../constants/tools";
 import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
+import { POLLINATIONS_HOME } from "../services/pollinations";
 
 export default function AiTool() {
   const { showToast } = useApp();
@@ -37,7 +38,7 @@ export default function AiTool() {
   const wc = (t) => t.trim().split(/\s+/).filter(Boolean).length;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="AI Text Enhancer" desc="Improve, rewrite, summarise and translate — free, no key needed">
         {output && (
           <Btn
@@ -57,7 +58,7 @@ export default function AiTool() {
         <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 100, background: "rgba(63,232,160,0.15)", color: "var(--accent3)", border: "1px solid rgba(63,232,160,0.25)", flexShrink: 0 }}>FREE</span>
         <span style={{ fontSize: 11.5, color: "var(--text3)" }}>
           Powered by{" "}
-          <a href="https://pollinations.ai" target="_blank" rel="noreferrer" style={{ color: "var(--accent5)" }}>
+          <a href={POLLINATIONS_HOME} target="_blank" rel="noreferrer" style={{ color: "var(--accent5)" }}>
             Pollinations.ai
           </a>
           {hasSK ? " — running with API key (full access)" : " — anonymous mode (no key, rate limited)"}

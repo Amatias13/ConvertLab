@@ -1,14 +1,17 @@
 import { useState, useRef, useCallback } from "react";
 import { AppProvider, useApp } from "./context/AppContext";
 import { DEFAULT_TOOL } from "./constants/app";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+import Header from "./modules/Header";
+import Sidebar from "./modules/Sidebar";
 import AboutModal from "./modules/AboutModal";
-import { FeedbackModal, CoffeeModal, ToastStack } from "./components/Modals";
-import { ProfileModal } from "./components/ProfileModal";
+import FeedbackModal from "./modules/FeedbackModal";
+import CoffeeModal from "./modules/CoffeeModal";
+import ToastStack from "./modules/ToastStack";
+import { ProfileModal } from "./modules/ProfileModal";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
-import { ShortcutsModal } from "./components/Shortcuts";
+import ShortcutsModal from "./modules/ShortcutsModal";
 import { TOOL_MAP } from "./features";
+import "./App.css";
 
 function AppInner() {
   const [activeTool, setActiveToolState] = useState(DEFAULT_TOOL);
@@ -35,12 +38,12 @@ function AppInner() {
   const ActiveTool = TOOL_MAP[activeTool];
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh", overflow: "hidden" }}>
+    <div className="app-shell">
       <Header activeTool={activeTool} setActiveTool={setActiveTool} searchOpen={searchOpen} setSearchOpen={openSearch} searchInputRef={searchInputRef} />
-      <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
+      <div className="app-body">
         <Sidebar activeTool={activeTool} setActiveTool={setActiveTool} />
-        <main key={activeTool} className="fade-in" style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", minWidth: 0 }}>
-          {ActiveTool ? <ActiveTool /> : <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text3)", fontSize: 14 }}>Select a tool from the sidebar</div>}
+        <main key={activeTool} className="fade-in app-main">
+          {ActiveTool ? <ActiveTool /> : <div className="app-empty">Select a tool from the sidebar</div>}
         </main>
       </div>
       <AboutModal toolId={activeTool} />

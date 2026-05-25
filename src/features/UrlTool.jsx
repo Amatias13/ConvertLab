@@ -43,7 +43,7 @@ export default function UrlTool() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="URL Encoder / Decoder" desc="Encode/decode URLs and parse query strings">
         <Btn onClick={() => setOutput(encodeURIComponent(input))} primary>
           Encode →

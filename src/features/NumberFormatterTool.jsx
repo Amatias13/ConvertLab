@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { ToolHeader, OptLabel, OptGroup, OptBtn } from "../components/UI";
 import { LOCALES } from "../constants/tools";
@@ -28,7 +27,6 @@ function toRoman(num) {
 }
 
 export default function NumberFormatterTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState("");
   const [decimals, setDecimals] = useState(2);
@@ -47,7 +45,7 @@ export default function NumberFormatterTool() {
   ];
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Number Formatter" desc="Format numbers in multiple locales, bases, and styles" />
 
       <div style={{ padding: "1.25rem", borderBottom: "1px solid var(--border)", display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
@@ -88,10 +86,6 @@ export default function NumberFormatterTool() {
               }
             }}
             style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10, padding: "0.65rem 0.85rem", cursor: row.val !== "—" ? "pointer" : "default", transition: "border-color 0.12s" }}
-            onMouseEnter={(e) => {
-              if (row.val !== "—") e.currentTarget.style.borderColor = "var(--border3)";
-            }}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
           >
             <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)", marginBottom: 4 }}>{row.label}</div>
             <div style={{ fontFamily: "var(--mono)", fontSize: "1rem", color: row.val !== "—" ? "var(--text)" : "var(--text3)" }}>{row.val}</div>

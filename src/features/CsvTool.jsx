@@ -1,11 +1,9 @@
 import { useState, useMemo } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { DELIMITERS } from "../constants/tools";
 
 export default function CsvTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [raw, setRaw] = useState("");
   const [delim, setDelim] = useState(",");
@@ -40,7 +38,7 @@ export default function CsvTool() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="CSV Viewer" desc="Paste CSV and view as interactive table">
         <Btn
           onClick={() => {

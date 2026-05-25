@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
+import { QR_API_BASE } from "../constants/app";
 
 export default function QrTool() {
   const [text, setText] = useState("");
   const [ec, setEc] = useState("M");
   const [size, setSize] = useState(256);
 
-  const qrUrl = text.trim() ? `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&ecc=${ec}&data=${encodeURIComponent(text)}&bgcolor=0f0f17&color=eeeef5&margin=3` : null;
+  const qrUrl = text.trim() ? `${QR_API_BASE}/?size=${size}x${size}&ecc=${ec}&data=${encodeURIComponent(text)}&bgcolor=0f0f17&color=eeeef5&margin=3` : null;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="QR Code Generator" desc="Generate QR codes from any text or URL">
         {qrUrl && (
           <a href={qrUrl} download="qrcode.png" target="_blank" rel="noreferrer">

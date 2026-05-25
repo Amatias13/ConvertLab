@@ -28,63 +28,70 @@
 <td width="50%" valign="top">
 
 ### 🤖 AI
-| Tool | Description |
-|------|-------------|
+
+| Tool             | Description                                   |
+| ---------------- | --------------------------------------------- |
 | AI Text Enhancer | Powered by Pollinations.ai — free, no API key |
 
 ### 📦 Data
-| Tool | Description |
-|------|-------------|
-| JSON Formatter | Validate, format & minify JSON |
-| Base64 | Encode / decode Base64 strings |
-| URL Encoder | Encode / decode URLs |
-| Hash Generator | MD5, SHA-1, SHA-256, SHA-512 |
-| JWT Decoder | Inspect & decode JWT tokens |
-| Number Base | Convert between bases 2 / 8 / 10 / 16 |
-| CSV Viewer | Visualize CSV as a table |
-| YAML ↔ JSON | Convert between YAML and JSON |
+
+| Tool           | Description                           |
+| -------------- | ------------------------------------- |
+| JSON Formatter | Validate, format & minify JSON        |
+| Base64         | Encode / decode Base64 strings        |
+| URL Encoder    | Encode / decode URLs                  |
+| Hash Generator | MD5, SHA-1, SHA-256, SHA-512          |
+| JWT Decoder    | Inspect & decode JWT tokens           |
+| Number Base    | Convert between bases 2 / 8 / 10 / 16 |
+| CSV Viewer     | Visualize CSV as a table              |
+| YAML ↔ JSON    | Convert between YAML and JSON         |
 
 ### 👁️ Preview
-| Tool | Description |
-|------|-------------|
-| Markdown Preview | Live Markdown renderer |
-| HTML Preview | Live HTML sandbox |
-| Email Preview | Render HTML emails |
-| SQL Formatter | Format & highlight SQL queries |
+
+| Tool             | Description                    |
+| ---------------- | ------------------------------ |
+| Markdown Preview | Live Markdown renderer         |
+| HTML Preview     | Live HTML sandbox              |
+| Email Preview    | Render HTML emails             |
+| SQL Formatter    | Format & highlight SQL queries |
 
 </td>
 <td width="50%" valign="top">
 
 ### ✏️ Text
-| Tool | Description |
-|------|-------------|
-| Regex Tester | Live regex with match highlight |
-| Text Diff | Compare two texts side-by-side |
-| Case Converter | camelCase, snake_case, UPPER and more |
-| HTML Entities | Encode / decode HTML entities |
-| Text Statistics | Word count, readability, frequency |
+
+| Tool            | Description                           |
+| --------------- | ------------------------------------- |
+| Regex Tester    | Live regex with match highlight       |
+| Text Diff       | Compare two texts side-by-side        |
+| Case Converter  | camelCase, snake_case, UPPER and more |
+| HTML Entities   | Encode / decode HTML entities         |
+| Text Statistics | Word count, readability, frequency    |
 
 ### 🎲 Generators
-| Tool | Description |
-|------|-------------|
-| UUID Generator | v4 UUIDs with bulk generation |
-| Lorem Ipsum | Placeholder text generator |
-| Password Generator | Secure, configurable passwords |
-| Cron Parser | Parse & explain cron expressions |
+
+| Tool               | Description                      |
+| ------------------ | -------------------------------- |
+| UUID Generator     | v4 UUIDs with bulk generation    |
+| Lorem Ipsum        | Placeholder text generator       |
+| Password Generator | Secure, configurable passwords   |
+| Cron Parser        | Parse & explain cron expressions |
 
 ### 🔄 Converters
-| Tool | Description |
-|------|-------------|
-| Timestamp | Unix ↔ human-readable dates |
-| Unit Converter | Length, weight, temperature & more |
-| Number Formatter | Locale-aware number formatting |
+
+| Tool             | Description                        |
+| ---------------- | ---------------------------------- |
+| Timestamp        | Unix ↔ human-readable dates        |
+| Unit Converter   | Length, weight, temperature & more |
+| Number Formatter | Locale-aware number formatting     |
 
 ### 🎨 Media
-| Tool | Description |
-|------|-------------|
-| Image Tools | Resize, convert & compress images |
-| Color Picker | HEX / RGB / HSL with palettes |
-| QR Code | Generate QR codes instantly |
+
+| Tool         | Description                       |
+| ------------ | --------------------------------- |
+| Image Tools  | Resize, convert & compress images |
+| Color Picker | HEX / RGB / HSL with palettes     |
+| QR Code      | Generate QR codes instantly       |
 
 </td>
 </tr>
@@ -102,7 +109,7 @@
 <td align="center" width="25%">📱<br/><b>PWA</b><br/><sub>Install on desktop or mobile. Works fully offline.</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%">⭐<br/><b>Favourites</b><br/><sub>Pin your most-used tools to the sidebar</sub></td>
+<td align="center" width="25%">⭐<br/><b>Favorites</b><br/><sub>Pin your most-used tools to the sidebar</sub></td>
 <td align="center" width="25%">⌨️<br/><b>Shortcuts</b><br/><sub>⌘K search · 1–9 jump · ⌘B sidebar · ? help</sub></td>
 <td align="center" width="25%">💾<br/><b>Portable</b><br/><sub>Export & import all settings across devices</sub></td>
 <td align="center" width="25%">🤖<br/><b>Free AI</b><br/><sub>Pollinations.ai — no API key, no account needed</sub></td>
@@ -152,6 +159,7 @@ Push to main → GitHub Actions builds → Deploys to GitHub Pages
 ```
 
 **Setup:**
+
 1. Go to **Settings → Pages → Source: GitHub Actions**
 2. Push to `main` — the workflow handles everything automatically
 

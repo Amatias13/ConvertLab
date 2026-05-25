@@ -1,18 +1,8 @@
 import { useState, useEffect } from "react";
 import { ToolHeader, OptGroup, OptBtn, Btn } from "../components/UI";
-import { useApp } from "../context/AppContext";
+import { formatRelativeTime } from "../helpers/util";
 import { useClipboard } from "../hooks/useClipboard";
-
-function relativeTime(date) {
-  const diff = (Date.now() - date.getTime()) / 1000;
-  const abs = Math.abs(diff),
-    future = diff < 0;
-  const fmt = (n, u) => `${Math.round(n)} ${u}${future ? " from now" : " ago"}`;
-  if (abs < 60) return fmt(abs, "s");
-  if (abs < 3600) return fmt(abs / 60, "m");
-  if (abs < 86400) return fmt(abs / 3600, "h");
-  return fmt(abs / 86400, "d");
-}
+import "./features.css";
 
 function tsRows(date) {
   if (isNaN(date.getTime())) return null;
@@ -24,12 +14,11 @@ function tsRows(date) {
     ["Time only", date.toLocaleTimeString()],
     ["Unix (s)", Math.floor(date.getTime() / 1000)],
     ["Unix (ms)", date.getTime()],
-    ["Relative", relativeTime(date)],
+    ["Relative", formatRelativeTime(date.getTime(), { allowFuture: true })],
   ];
 }
 
 export default function TimestampTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [unixVal, setUnixVal] = useState("");
   const [unit, setUnit] = useState("s");
@@ -55,10 +44,10 @@ export default function TimestampTool() {
             onClick={() => {
               copy(String(v), "Copied");
             }}
-            style={{ background: "var(--bg3)", borderRadius: 8, padding: "0.45rem 0.7rem", cursor: "pointer", border: "1px solid var(--border)" }}
+            className="result-row"
           >
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text3)" }}>{k}</div>
-            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", marginTop: 2, wordBreak: "break-all" }}>{String(v)}</div>
+            <div className="result-row-key">{k}</div>
+            <div className="result-row-val">{String(v)}</div>
           </div>
         ))}
       </div>
@@ -73,7 +62,7 @@ export default function TimestampTool() {
   );
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Timestamp Converter" desc="Convert between Unix timestamps and human-readable dates">
         <Btn
           primary

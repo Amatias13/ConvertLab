@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
 import { ToolHeader, Panels, Panel0, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
+import { LOREM_WORDS } from "../constants/tools";
 
-const WORDS =
-  "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum".split(
-    " ",
-  );
-
-const rw = () => WORDS[Math.floor(Math.random() * WORDS.length)];
+const rw = () => LOREM_WORDS[Math.floor(Math.random() * LOREM_WORDS.length)];
 const sentence = () => {
   const ws = Array.from({ length: 8 + Math.floor(Math.random() * 10) }, rw);
   return ws[0][0].toUpperCase() + ws.join(" ").slice(1) + ".";
@@ -16,7 +11,6 @@ const sentence = () => {
 const paragraph = () => Array.from({ length: 3 + Math.floor(Math.random() * 4) }, sentence).join(" ");
 
 export default function LoremTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [type, setType] = useState("paragraphs");
   const [count, setCount] = useState(3);
@@ -48,7 +42,7 @@ export default function LoremTool() {
   const wc = output.trim().split(/\s+/).filter(Boolean).length;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Lorem Ipsum Generator" desc="Generate placeholder text in various formats">
         <Btn
           onClick={() => {

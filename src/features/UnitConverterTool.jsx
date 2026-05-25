@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { ToolHeader, OptionsBar, OptLabel, OptGroup, OptBtn } from "../components/UI";
 import { UNIT_CATEGORIES } from "../constants/tools";
@@ -27,7 +26,6 @@ function fmt(n) {
 }
 
 export default function UnitConverterTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [category, setCategory] = useState("Length");
   const [from, setFrom] = useState("m");
@@ -43,7 +41,7 @@ export default function UnitConverterTool() {
   const numVal = parseFloat(value);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Unit Converter" desc="Convert between Length, Weight, Temperature, Volume, Speed, Storage, Time" />
 
       <OptionsBar>
@@ -83,10 +81,6 @@ export default function UnitConverterTool() {
                     }
                   }}
                   style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10, padding: "0.75rem", cursor: result !== null ? "pointer" : "default", transition: "border-color 0.12s" }}
-                  onMouseEnter={(e) => {
-                    if (result !== null) e.currentTarget.style.borderColor = "var(--border3)";
-                  }}
-                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
                 >
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)", marginBottom: 4 }}>{to}</div>
                   <div style={{ fontFamily: "var(--mono)", fontSize: "1rem", color: result !== null ? "var(--text)" : "var(--text3)" }}>{result !== null ? fmt(result) : "—"}</div>

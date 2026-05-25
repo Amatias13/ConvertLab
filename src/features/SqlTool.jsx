@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
 import { SQL_KEYWORDS, SQL_CLAUSES } from "../constants/tools";
@@ -40,7 +39,6 @@ function highlightSQL(sql) {
 }
 
 export default function SqlTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
@@ -59,7 +57,7 @@ export default function SqlTool() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="SQL Formatter" desc="Format, minify and syntax-highlight SQL queries">
         <Btn onClick={minify}>Minify</Btn>
         <Btn primary onClick={format}>

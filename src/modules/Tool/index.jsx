@@ -10,8 +10,6 @@ import Keywords from "../Keywords";
 // Styles
 import "./styles.css";
 
-// Context
-import { useApp } from "../../context/AppContext";
 import { ALL_TOOLS_ENRICHED } from "../../data/tools";
 
 /**
@@ -22,7 +20,6 @@ import { ALL_TOOLS_ENRICHED } from "../../data/tools";
  */
 function Tool({ toolId }) {
   const tool = ALL_TOOLS_ENRICHED.find((t) => t.id === toolId);
-  const { showToast } = useApp();
   if (!tool?.title) return null;
 
   return (
@@ -30,13 +27,7 @@ function Tool({ toolId }) {
       <Title icon={tool.icon} title={tool.title} tagline={tool.tagline} color={tool.color} />
       <p className="toolDescription">{tool.description}</p>
       <UseCases useCases={tool.useCases} />
-      <Examples
-        examples={tool.examples}
-        onCopy={(value) => {
-          navigator.clipboard.writeText(value);
-          showToast?.("Example input copied to clipboard!");
-        }}
-      />
+      <Examples examples={tool.examples} />
       <Tips tips={tool.tips} />
       <Keywords keywords={tool.keywords} />
     </div>

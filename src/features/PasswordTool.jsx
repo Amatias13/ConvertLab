@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { ToolHeader, Panels, Panel0, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn } from "../components/UI";
-import { CHARSETS } from "../constants/tools";
+import { CHARSETS, PASSWORD_STRENGTH_LEVELS } from "../constants/tools";
+import "./features.css";
 
 function genPassword(length, opts) {
   let charset = "";
@@ -32,20 +32,12 @@ function passwordStrength(pwd) {
   if (/[a-z]/.test(pwd)) score++;
   if (/[0-9]/.test(pwd)) score++;
   if (/[^A-Za-z0-9]/.test(pwd)) score++;
-  const levels = [
-    { score: 0, label: "Too weak", color: "var(--accent2)" },
-    { score: 2, label: "Weak", color: "var(--accent2)" },
-    { score: 4, label: "Fair", color: "var(--accent4)" },
-    { score: 5, label: "Good", color: "var(--accent5)" },
-    { score: 6, label: "Strong", color: "var(--accent3)" },
-    { score: 7, label: "Very strong", color: "var(--accent3)" },
-  ];
+  const levels = PASSWORD_STRENGTH_LEVELS;
   const level = [...levels].reverse().find((l) => score >= l.score) || levels[0];
   return { score, label: level.label, color: level.color, pct: Math.round((score / 7) * 100) };
 }
 
 export default function PasswordTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [length, setLength] = useState(20);
   const [count, setCount] = useState(5);
@@ -63,7 +55,7 @@ export default function PasswordTool() {
   const toggle = (key) => setOpts((prev) => ({ ...prev, [key]: !prev[key] }));
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Password Generator" desc="Generate secure, cryptographically random passwords">
         <Btn primary onClick={generate}>
           Regenerate
@@ -112,14 +104,12 @@ export default function PasswordTool() {
                   onClick={() => {
                     copy(pwd, "Password copied!");
                   }}
-                  style={{ display: "flex", flexDirection: "column", gap: 6, padding: "0.75rem", background: "var(--bg2)", borderRadius: 10, border: "1px solid var(--border)", cursor: "pointer", transition: "border-color 0.12s" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--border3)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                  className="pwd-item"
                 >
-                  <div style={{ fontFamily: "var(--mono)", fontSize: 14, letterSpacing: "0.05em", wordBreak: "break-all", color: "var(--text)" }}>{pwd}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ flex: 1, height: 3, background: "var(--bg4)", borderRadius: 99 }}>
-                      <div style={{ width: str.pct + "%", height: "100%", background: str.color, borderRadius: 99, transition: "all 0.3s" }} />
+                  <div className="pwd-value">{pwd}</div>
+                  <div className="pwd-meta">
+                    <div className="strength-bar-track">
+                      <div className="strength-bar-fill" style={{ width: str.pct + "%", background: str.color }} />
                     </div>
                     <span style={{ fontSize: 10, color: str.color, minWidth: 70 }}>{str.label}</span>
                     <span style={{ fontSize: 10, color: "var(--text3)" }}>copy</span>

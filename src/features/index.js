@@ -27,10 +27,8 @@ import NumberFormatterTool from "./NumberFormatterTool";
 import YamlJsonTool from "./YamlJsonTool";
 import TextStatsTool from "./TextStatsTool";
 
-// Single source of truth for tool ID → component mapping.
-// Consumed by App.jsx via TOOL_MAP and by data/tools.js via TOOL_COMPONENTS
-// when merging registries in the future.
-export const TOOL_COMPONENTS = {
+// Tool ID → component mapping. Single source of truth consumed by App.jsx.
+export const TOOL_MAP = {
   ai: AiTool,
   json: JsonTool,
   base64: Base64Tool,
@@ -61,5 +59,10 @@ export const TOOL_COMPONENTS = {
   yaml: YamlJsonTool,
 };
 
-// Backwards-compat alias used by App.jsx
-export const TOOL_MAP = TOOL_COMPONENTS;
+if (import.meta.env.DEV) {
+  import("../data/tools").then(({ ALL_TOOLS }) => {
+    ALL_TOOLS.forEach(({ id }) => {
+      if (!TOOL_MAP[id]) console.warn(`[TOOL_MAP] Missing component for tool id: "${id}"`);
+    });
+  });
+}

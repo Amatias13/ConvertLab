@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, CodeArea } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 
 export default function CaseTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState("");
 
@@ -35,7 +33,7 @@ export default function CaseTool() {
     : [];
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Case Converter" desc="Transform text between different naming conventions" />
       <Panels>
         <Panel0 style={{ maxWidth: 320 }}>
@@ -55,8 +53,6 @@ export default function CaseTool() {
                     copy(c.val, "Copied: " + c.name);
                   }}
                   style={{ display: "flex", alignItems: "baseline", gap: "0.75rem", padding: "0.5rem 0.75rem", background: "var(--bg2)", borderRadius: 8, border: "1px solid var(--border)", cursor: "pointer", transition: "border-color 0.12s" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--border3)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
                 >
                   <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)", minWidth: 108 }}>{c.name}</span>
                   <span style={{ fontFamily: "var(--mono)", fontSize: 12.5, color: "var(--text)", wordBreak: "break-all", flex: 1 }}>{c.val}</span>

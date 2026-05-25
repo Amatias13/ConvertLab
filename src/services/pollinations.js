@@ -1,13 +1,17 @@
 // Pollinations.ai API service
 // Secret key injected at build time via VITE_ env var (GitHub Actions secret).
 // In dev, falls back to anonymous mode automatically.
+export const POLLINATIONS_HOME = "https://pollinations.ai";
+const POLLINATIONS_CHAT_URL = "https://gen.pollinations.ai/v1/chat/completions";
+const POLLINATIONS_TEXT_URL = "https://text.pollinations.ai/openai";
+const POLLINATIONS_SIMPLE_URL = "https://text.pollinations.ai";
 
 const SK = import.meta.env.VITE_POLLINATIONS_SK || "";
 
 const isNotice = (text) => text.includes("IMPORTANT NOTICE") || text.includes("legacy text API") || text.includes("enter.pollinations.ai") || text.includes("being deprecated");
 
 async function callWithSK(systemPrompt, userText, model) {
-  const res = await fetch("https://gen.pollinations.ai/v1/chat/completions", {
+  const res = await fetch(POLLINATIONS_CHAT_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +37,7 @@ async function callWithSK(systemPrompt, userText, model) {
 }
 
 async function callAnonymous(systemPrompt, userText, model) {
-  const res = await fetch("https://text.pollinations.ai/openai", {
+  const res = await fetch(POLLINATIONS_TEXT_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -65,7 +69,7 @@ async function callAnonymousGET(systemPrompt, userText, model) {
     referrer: "amatias13.github.io",
     seed: String(Math.floor(Math.random() * 99999)),
   });
-  const url = `https://text.pollinations.ai/${encodeURIComponent(userText)}?${params}`;
+  const url = `${POLLINATIONS_SIMPLE_URL}/${encodeURIComponent(userText)}?${params}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const text = await res.text();

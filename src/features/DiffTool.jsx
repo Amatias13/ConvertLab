@@ -11,7 +11,7 @@ export default function DiffTool() {
   const dels = result.filter((d) => d.t === "-").length;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Text Diff" desc="Compare two texts and see line-by-line differences" />
       <Panels style={{ flex: "0 0 45%", minHeight: 140 }}>
         <Panel0>

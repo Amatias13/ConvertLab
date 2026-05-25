@@ -25,3 +25,20 @@ export const persist = (key, value) => {
     /* quota/private mode */
   }
 };
+
+/**
+ * Formats a timestamp (ms) as a human-readable relative string.
+ * @param {number} ts - Unix timestamp in milliseconds
+ * @param {{ future?: boolean }} opts - if future=true, handles future dates with "from now"
+ * @returns {string} e.g. "just now", "3m ago", "2h ago", "5d ago"
+ */
+export const formatRelativeTime = (ts, { allowFuture = false } = {}) => {
+  const diff = (Date.now() - ts) / 1000;
+  const abs = Math.abs(diff);
+  const isFuture = allowFuture && diff < 0;
+  const suffix = isFuture ? " from now" : " ago";
+  if (abs < 60) return isFuture ? "just now" : "just now";
+  if (abs < 3600) return Math.round(abs / 60) + "m" + suffix;
+  if (abs < 86400) return Math.round(abs / 3600) + "h" + suffix;
+  return Math.round(abs / 86400) + "d" + suffix;
+};

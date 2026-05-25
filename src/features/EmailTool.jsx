@@ -9,7 +9,7 @@ export default function EmailTool() {
   const [format, setFormat] = useState("text");
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Email Preview" desc="Preview how your email will look" />
 
       <Panels>

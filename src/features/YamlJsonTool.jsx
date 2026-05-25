@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea, StatusBadge } from "../components/UI";
 
@@ -91,7 +90,6 @@ function yamlToJson(yaml) {
 }
 
 export default function YamlJsonTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState("");
   const [direction, setDirection] = useState("json2yaml");
@@ -116,7 +114,7 @@ export default function YamlJsonTool() {
   }, [input, direction]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="YAML ↔ JSON Converter" desc="Convert between YAML and JSON formats">
         <Btn
           onClick={() => {

@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
 import { ENTITY_MAP } from "../constants/tools";
@@ -21,7 +20,6 @@ function decodeEntities(text) {
 }
 
 export default function HtmlEntitiesTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState("");
   const [mode, setMode] = useState("essential");
@@ -36,7 +34,7 @@ export default function HtmlEntitiesTool() {
   }, [input]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="HTML Entities" desc="Encode and decode HTML entities">
         <Btn
           onClick={() => {

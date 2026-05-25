@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { ToolHeader, Panels, Panel0, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 
 function genUUID4() {
@@ -22,7 +21,6 @@ function genToken(bytes) {
 }
 
 export default function UuidTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [count, setCount] = useState(1);
   const [format, setFormat] = useState("uuid4");
@@ -44,7 +42,7 @@ export default function UuidTool() {
   }, [count, format, upper]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="UUID Generator" desc="Generate v4 UUIDs, NanoIDs, and random tokens">
         <Btn
           onClick={() => {
@@ -102,8 +100,6 @@ export default function UuidTool() {
                   copy(id, "Copied");
                 }}
                 style={{ fontFamily: "var(--mono)", fontSize: 13, color: "var(--text)", padding: "0.4rem 0.75rem", borderRadius: 6, background: "var(--bg2)", border: "1px solid var(--border)", cursor: "pointer", transition: "border-color 0.12s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--border3)")}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
               >
                 {id}
               </div>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, Btn, CodeArea } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { useClipboard } from "../hooks/useClipboard";
 import { ALGOS } from "../constants/tools";
 
@@ -13,7 +12,6 @@ async function hashText(text, algo) {
 }
 
 export default function HashTool() {
-  const { showToast } = useApp();
   const { copy } = useClipboard();
   const [input, setInput] = useState("");
   const [hashes, setHashes] = useState({});
@@ -27,7 +25,7 @@ export default function HashTool() {
   }, [input]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Hash Generator" desc="Generate SHA-1, SHA-256, SHA-384, SHA-512 hashes" />
 
       <Panels>

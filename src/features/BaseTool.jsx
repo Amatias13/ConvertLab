@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { ToolHeader, OptionsBar, OptLabel } from "../components/UI";
-
-const BASES = [
-  { id: "dec", label: "Decimal", sub: "base 10", radix: 10 },
-  { id: "bin", label: "Binary", sub: "base 2", radix: 2 },
-  { id: "oct", label: "Octal", sub: "base 8", radix: 8 },
-  { id: "hex", label: "Hex", sub: "base 16", radix: 16 },
-];
+import { BASE_OPTIONS } from "../constants/tools";
 
 export default function BaseTool() {
   const [values, setValues] = useState({ dec: "", bin: "", oct: "", hex: "", custom: "" });
@@ -19,7 +13,7 @@ export default function BaseTool() {
       setValues(v);
       return;
     }
-    const base = from === "custom" ? customBase : BASES.find((b) => b.id === from)?.radix;
+    const base = from === "custom" ? customBase : BASE_OPTIONS.find((b) => b.id === from)?.radix;
     const dec = parseInt(raw, base);
     if (isNaN(dec)) {
       setValues((prev) => ({ ...prev, [from]: raw }));
@@ -70,7 +64,7 @@ export default function BaseTool() {
   );
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Number Base Converter" desc="Convert between Binary, Octal, Decimal, Hex and custom bases" />
 
       <div style={{ flex: 1, overflow: "auto", padding: "1.25rem" }}>
@@ -86,7 +80,7 @@ export default function BaseTool() {
             marginBottom: "1.25rem",
           }}
         >
-          {BASES.map(({ id, label, sub, radix }) => cell(id, label, sub, radix))}
+          {BASE_OPTIONS.map(({ id, label, sub, radix }) => cell(id, label, sub, radix))}
         </div>
 
         <div style={{ background: "var(--bg2)", borderRadius: 12, border: "1px solid var(--border)", padding: "1rem 1.25rem", display: "flex", flexDirection: "column", gap: 12 }}>

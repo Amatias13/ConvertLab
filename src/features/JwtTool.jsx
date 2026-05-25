@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, Btn, CodeArea, StatusBadge } from "../components/UI";
-import { useApp } from "../context/AppContext";
 import { PARTCOLORS } from "../constants/tools";
+import "./features.css";
 
 function b64Decode(str) {
   return atob(str.replace(/-/g, "+").replace(/_/g, "/"));
 }
 
 export default function JwtTool() {
-  const { showToast } = useApp();
   const [input, setInput] = useState("");
 
   let decoded = null;
@@ -41,7 +40,7 @@ export default function JwtTool() {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="JWT Decoder" desc="Decode and inspect JSON Web Tokens">
         <Btn onClick={() => setInput("")}>Clear</Btn>
       </ToolHeader>

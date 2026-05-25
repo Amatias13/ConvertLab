@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ToolHeader } from "../components/UI";
 import { CRON_PRESETS } from "../constants/tools";
+import "./features.css";
 
 function descField(f) {
   if (f === "*") return "every";
@@ -57,20 +58,15 @@ export default function CronTool() {
   const nextRuns = valid ? getNextRuns(expr) : [];
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
+    <div className="tool-wrap">
       <ToolHeader title="Cron Expression Parser" desc="Explain cron expressions and preview next run times" />
       <div style={{ flex: 1, overflow: "auto", padding: "1.25rem", display: "flex", flexDirection: "column", gap: "1.1rem" }}>
-        <div style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 12, padding: "1.1rem" }}>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)", marginBottom: 8 }}>Expression</div>
-          <input
-            type="text"
-            value={expr}
-            onChange={(e) => setExpr(e.target.value)}
-            style={{ fontFamily: "var(--mono)", fontSize: "1.3rem", background: "transparent", border: "1px solid var(--border2)", borderRadius: 8, padding: "0.5rem 0.85rem", color: "var(--text)", outline: "none", width: "100%" }}
-          />
+        <div className="tool-card">
+          <div className="tool-card-label">Expression</div>
+          <input type="text" value={expr} onChange={(e) => setExpr(e.target.value)} className="mono-input" style={{ fontSize: "1.3rem" }} />
           <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
             {CRON_PRESETS.map((p) => (
-              <button key={p.value} onClick={() => setExpr(p.value)} style={{ padding: "0.22rem 0.65rem", borderRadius: 6, border: "1px solid var(--border)", background: "transparent", color: "var(--text3)", fontSize: 11, cursor: "pointer", fontFamily: "var(--sans)" }}>
+              <button key={p.value} onClick={() => setExpr(p.value)} className="preset-btn">
                 {p.label}
               </button>
             ))}
@@ -94,7 +90,7 @@ export default function CronTool() {
         )}
 
         {nextRuns.length > 0 && (
-          <div style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 12, padding: "1.1rem" }}>
+          <div className="tool-card">
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text3)", marginBottom: 10 }}>Next 10 runs</div>
             <div style={{ fontFamily: "var(--mono)", fontSize: 12, lineHeight: 2.2, color: "var(--text2)" }}>
               {nextRuns.map((d, i) => (

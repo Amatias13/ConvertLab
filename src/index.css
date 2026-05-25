@@ -267,3 +267,9 @@ select {
 .panel-divider {
   border-left: 1px solid var(--border);
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
