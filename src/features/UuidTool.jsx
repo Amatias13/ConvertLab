@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ToolHeader, Panels, Panel0, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn } from "../components/UI";
 import { useClipboard } from "../hooks/useClipboard";
 
@@ -27,7 +27,7 @@ export default function UuidTool() {
   const [upper, setUpper] = useState(false);
   const [output, setOutput] = useState("");
 
-  const generate = () => {
+  const generate = useCallback(() => {
     const ids = Array.from({ length: count }, () => {
       if (format === "uuid4") return genUUID4();
       if (format === "nanoid") return genNanoID();
@@ -35,11 +35,11 @@ export default function UuidTool() {
       return genToken(64);
     }).map((id) => (upper ? id.toUpperCase() : id.toLowerCase()));
     setOutput(ids.join("\n"));
-  };
+  }, [count, format, upper]);
 
   useEffect(() => {
     generate();
-  }, [count, format, upper]);
+  }, [generate]);
 
   return (
     <div className="tool-wrap">

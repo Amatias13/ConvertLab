@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ToolHeader } from "../components/UI";
 import { CRON_PRESETS } from "../constants/tools";
 import "./features.css";
@@ -33,7 +33,7 @@ function getNextRuns(expr, count = 10) {
     if (field.includes(",")) return field.split(",").map(Number).includes(val);
     return parseInt(field) === val;
   };
-  while (results.length < count && tries < 100000) {
+  while (results.length < count && tries < 527040) {
     tries++;
     if (matches(month, d.getMonth() + 1) && matches(day, d.getDate()) && matches(wd, d.getDay()) && matches(hour, d.getHours()) && matches(min, d.getMinutes())) {
       results.push(new Date(d));
@@ -45,8 +45,18 @@ function getNextRuns(expr, count = 10) {
 
 export default function CronTool() {
   const [expr, setExpr] = useState("0 9 * * 1-5");
+  const [debouncedExpr, setDebouncedExpr] = useState("0 9 * * 1-5");
+  const timerRef = useRef(null);
 
-  const parts = expr.trim().split(/\s+/);
+  const handleExprChange = (val) => {
+    setExpr(val);
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setDebouncedExpr(val), 300);
+  };
+
+  useEffect(() => () => clearTimeout(timerRef.current), []);
+
+  const parts = debouncedExpr.trim().split(/\s+/);
   const valid = parts.length === 5;
   const fieldDefs = [
     { name: "Minute", range: "0–59", val: parts[0] },
@@ -55,7 +65,7 @@ export default function CronTool() {
     { name: "Month", range: "1–12", val: parts[3] },
     { name: "Day/week", range: "0–6", val: parts[4] },
   ];
-  const nextRuns = valid ? getNextRuns(expr) : [];
+  const nextRuns = valid ? getNextRuns(debouncedExpr) : [];
 
   return (
     <div className="tool-wrap">
@@ -63,10 +73,17 @@ export default function CronTool() {
       <div style={{ flex: 1, overflow: "auto", padding: "1.25rem", display: "flex", flexDirection: "column", gap: "1.1rem" }}>
         <div className="tool-card">
           <div className="tool-card-label">Expression</div>
-          <input type="text" value={expr} onChange={(e) => setExpr(e.target.value)} className="mono-input" style={{ fontSize: "1.3rem" }} />
+          <input type="text" value={expr} onChange={(e) => handleExprChange(e.target.value)} className="mono-input" style={{ fontSize: "1.3rem" }} />
           <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
             {CRON_PRESETS.map((p) => (
-              <button key={p.value} onClick={() => setExpr(p.value)} className="preset-btn">
+              <button
+                key={p.value}
+                onClick={() => {
+                  setExpr(p.value);
+                  setDebouncedExpr(p.value);
+                }}
+                className="preset-btn"
+              >
                 {p.label}
               </button>
             ))}

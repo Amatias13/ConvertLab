@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptGroup, OptBtn } from "../components/UI";
 
+function sanitizeHtml(html) {
+  const el = document.createElement("div");
+  el.innerHTML = html;
+  el.querySelectorAll("script,style,iframe,object,embed,form").forEach((n) => n.remove());
+  el.querySelectorAll("*").forEach((n) => {
+    [...n.attributes].forEach((a) => {
+      if (/^on/i.test(a.name)) n.removeAttribute(a.name);
+      if (["href", "src", "action"].includes(a.name) && /^javascript:/i.test(a.value)) n.removeAttribute(a.name);
+    });
+  });
+  return el.innerHTML;
+}
+
 export default function EmailTool() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -61,7 +74,7 @@ export default function EmailTool() {
                 <div style={{ fontWeight: 600, fontSize: 14, color: "var(--text)", marginTop: 6 }}>{subject || "No subject"}</div>
               </div>
               <div style={{ background: "var(--bg)", padding: "1.5rem", minHeight: 200, fontSize: 14, lineHeight: 1.7, color: "var(--text2)", whiteSpace: format === "text" ? "pre-wrap" : "normal" }}>
-                {format === "html" ? <div dangerouslySetInnerHTML={{ __html: body }} /> : body || <span style={{ color: "var(--text3)" }}>Email body will appear here...</span>}
+                {format === "html" ? <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(body) }} /> : body || <span style={{ color: "var(--text3)" }}>Email body will appear here...</span>}
               </div>
             </div>
           </div>

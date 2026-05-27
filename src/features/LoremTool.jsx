@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ToolHeader, Panels, Panel0, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
 import { useClipboard } from "../hooks/useClipboard";
 import { LOREM_WORDS } from "../constants/tools";
@@ -17,7 +17,7 @@ export default function LoremTool() {
   const [classic, setClassic] = useState(false);
   const [output, setOutput] = useState("");
 
-  const generate = () => {
+  const generate = useCallback(() => {
     let result;
     if (type === "paragraphs") {
       const ps = Array.from({ length: count }, paragraph);
@@ -33,11 +33,11 @@ export default function LoremTool() {
       result = ws.join(" ");
     }
     setOutput(result);
-  };
+  }, [type, count, classic]);
 
   useEffect(() => {
     generate();
-  }, [type, count, classic]);
+  }, [generate]);
 
   const wc = output.trim().split(/\s+/).filter(Boolean).length;
 

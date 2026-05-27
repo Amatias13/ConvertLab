@@ -15,7 +15,7 @@ const TABS = [
 ];
 
 export function ProfileModal() {
-  const { modal, setModal, profile, saveProfile, setPassword, checkPassword, profileHash, theme, toggleTheme, history, exportPresets, importPresets, showToast } = useApp();
+  const { modal, setModal, profile, saveProfile, setPassword, checkPassword, profileHash, theme, toggleTheme, history, exportPresets, importPresets, showToast, clearHistory } = useApp();
   const [tab, setTab] = useState("appearance");
   const [pwdInput, setPwdInput] = useState("");
   const [newPwd, setNewPwd] = useState("");
@@ -235,7 +235,7 @@ export function ProfileModal() {
               {history.length > 0 && (
                 <button
                   onClick={() => {
-                    localStorage.removeItem(STORAGE_KEYS.HISTORY);
+                    clearHistory();
                     showToast("History cleared");
                     setModal(null);
                   }}

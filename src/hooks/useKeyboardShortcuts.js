@@ -12,6 +12,7 @@ export function useKeyboardShortcuts({ setActiveTool, activeTool, setSearchOpen,
 
       if (e.key === "Escape") {
         setShortcutsOpen(false);
+        setModal(null);
         return;
       }
 

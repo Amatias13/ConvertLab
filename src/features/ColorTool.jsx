@@ -5,9 +5,11 @@ import { useClipboard } from "../hooks/useClipboard";
 import { COLOR_PRESETS } from "../constants/tools";
 import Section from "../components/Section";
 import ColorSwatch from "../components/ColorSwatch";
+import { useApp } from "../context/AppContext";
 
 export default function ColorTool() {
   const { copy } = useClipboard();
+  const { saveProfile } = useApp();
   const [hex, setHex] = useState("#7c6dff");
   const [hexInput, setHexInput] = useState("#7c6dff");
 
@@ -15,6 +17,10 @@ export default function ColorTool() {
     if (!/^#[0-9a-fA-F]{6}$/.test(h)) return;
     setHex(h);
     setHexInput(h);
+  };
+
+  const setAsAccent = () => {
+    saveProfile({ paletteIdx: 6, customAccent: hex });
   };
 
   const rgb = hexToRgb(hex);
@@ -73,6 +79,9 @@ export default function ColorTool() {
           }}
         >
           Copy RGB
+        </Btn>
+        <Btn onClick={setAsAccent} primary>
+          Set as App Accent
         </Btn>
       </div>
       <div style={{ flex: 1, overflow: "auto", padding: "1.25rem" }}>

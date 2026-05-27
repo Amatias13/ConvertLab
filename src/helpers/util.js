@@ -37,7 +37,7 @@ export const formatRelativeTime = (ts, { allowFuture = false } = {}) => {
   const abs = Math.abs(diff);
   const isFuture = allowFuture && diff < 0;
   const suffix = isFuture ? " from now" : " ago";
-  if (abs < 60) return isFuture ? "just now" : "just now";
+  if (abs < 60) return "just now";
   if (abs < 3600) return Math.round(abs / 60) + "m" + suffix;
   if (abs < 86400) return Math.round(abs / 3600) + "h" + suffix;
   return Math.round(abs / 86400) + "d" + suffix;

@@ -11,10 +11,40 @@ export default function CsvTool() {
 
   const parsed = useMemo(() => {
     if (!raw.trim()) return null;
-    const rows = raw
-      .trim()
-      .split("\n")
-      .map((r) => r.split(delim).map((c) => c.trim().replace(/^"|"$/g, "")));
+    const parseCsv = (text, sep) => {
+      const rows = [];
+      let row = [],
+        field = "",
+        inQuotes = false;
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (inQuotes) {
+          if (ch === '"' && text[i + 1] === '"') {
+            field += '"';
+            i++;
+          } else if (ch === '"') inQuotes = false;
+          else field += ch;
+        } else if (ch === '"') {
+          inQuotes = true;
+        } else if (ch === sep) {
+          row.push(field.trim());
+          field = "";
+        } else if (ch === "\n" || (ch === "\r" && text[i + 1] === "\n")) {
+          if (ch === "\r") i++;
+          row.push(field.trim());
+          rows.push(row);
+          row = [];
+          field = "";
+        } else {
+          field += ch;
+        }
+      }
+      row.push(field.trim());
+      if (row.some(Boolean)) rows.push(row);
+      return rows;
+    };
+    const rows = parseCsv(raw.trim(), delim);
+    if (rows.length < 1) return null;
     return { headers: rows[0], data: rows.slice(1) };
   }, [raw, delim]);
 

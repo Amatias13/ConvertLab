@@ -25,6 +25,8 @@ function parseMarkdown(md) {
     .replace(/(<li>[\s\S]*?<\/li>\n?)+/g, (s) => `<ul>${s}</ul>`)
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:6px">')
+    .replace(/href="javascript:[^"]*"/gi, 'href="#"')
+    .replace(/src="javascript:[^"]*"/gi, 'src=""')
     .replace(/\n\n/g, "</p><p>")
     .replace(/\n/g, "<br>");
   return "<p>" + h + "</p>";

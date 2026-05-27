@@ -36,7 +36,6 @@ function AppInner() {
   useKeyboardShortcuts({ setActiveTool, activeTool, setSearchOpen: openSearch, setShortcutsOpen });
 
   const ActiveTool = TOOL_MAP[activeTool];
-
   return (
     <div className="app-shell">
       <Header activeTool={activeTool} setActiveTool={setActiveTool} searchOpen={searchOpen} setSearchOpen={openSearch} searchInputRef={searchInputRef} />

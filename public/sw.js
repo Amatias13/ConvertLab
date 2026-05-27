@@ -1,3 +1,4 @@
+// CACHE_NAME is auto-bumped at build time by vite swVersionPlugin (vite.config.js)
 const CACHE_NAME = "ConvertLab-v2";
 const STATIC_ASSETS = ["/ConvertLab/", "/ConvertLab/index.html"];
 

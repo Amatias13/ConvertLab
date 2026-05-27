@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { ToolHeader, Panels, Panel0, Panel, PanelLabel, OptionsBar, OptLabel, OptGroup, OptBtn, Btn, CodeArea } from "../components/UI";
 import { QR_API_BASE } from "../constants/app";
+import { useApp } from "../context/AppContext";
 
 export default function QrTool() {
+  const { theme } = useApp();
   const [text, setText] = useState("");
   const [ec, setEc] = useState("M");
   const [size, setSize] = useState(256);
 
-  const qrUrl = text.trim() ? `${QR_API_BASE}/?size=${size}x${size}&ecc=${ec}&data=${encodeURIComponent(text)}&bgcolor=0f0f17&color=eeeef5&margin=3` : null;
+  const bgColor = theme === "dark" ? "0f0f17" : "ffffff";
+  const fgColor = theme === "dark" ? "eeeef5" : "111118";
+  const qrUrl = text.trim() ? `${QR_API_BASE}/?size=${size}x${size}&ecc=${ec}&data=${encodeURIComponent(text)}&bgcolor=${bgColor}&color=${fgColor}&margin=3` : null;
 
   return (
     <div className="tool-wrap">

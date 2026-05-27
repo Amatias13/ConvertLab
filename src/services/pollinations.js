@@ -86,7 +86,6 @@ async function callAnonymousGET(systemPrompt, userText, model) {
  * @returns {Promise<string>} - the AI response text
  */
 export async function callAI(systemPrompt, userText, model) {
-  const hasSK = Boolean(SK);
   const attempts = hasSK
     ? [() => callWithSK(systemPrompt, userText, model), () => callAnonymous(systemPrompt, userText, model), () => callAnonymousGET(systemPrompt, userText, model)]
     : [() => callAnonymous(systemPrompt, userText, model), () => callAnonymousGET(systemPrompt, userText, model), () => callAnonymousGET(systemPrompt, userText, model === "openai" ? "mistral" : "openai")];

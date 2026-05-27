@@ -3,7 +3,6 @@ import { DEFAULT_PROFILE, ACCENT_PALETTES, FONT_OPTIONS } from "../constants/the
 import { persist, hashString } from "../helpers/util";
 import { APP_VERSION } from "../constants/app";
 import { sanitizeProfile } from "../helpers/profile";
-import { darken } from "../helpers/color";
 import { STORAGE_KEYS } from "../constants/app";
 import { useTheme } from "./ThemeContext";
 
@@ -46,21 +45,46 @@ export function ProfileProvider({ children, showToast }) {
     root.setAttribute("data-theme", theme);
     const pal = ACCENT_PALETTES[profile.paletteIdx] || ACCENT_PALETTES[0];
     const isCustom = pal.name === "Custom";
-    const factor = theme === "light" ? 20 : 0;
     const applyAccent = (key, val) => {
       if (!val) return;
-      root.style.setProperty(key, factor ? darken(val, factor) : val);
+      root.style.setProperty(key, val);
+    };
+    const hexToRgb = (hex) => {
+      const n = parseInt(hex.replace("#",""), 16);
+      return [(n>>16)&255, (n>>8)&255, n&255];
+    };
+    const mixColor = (hex, base, amount) => {
+      try {
+        const [ar,ag,ab] = hexToRgb(hex);
+        const [br,bg,bb] = hexToRgb(base);
+        const t = amount / 100;
+        const r = Math.round(ar*t + br*(1-t));
+        const g = Math.round(ag*t + bg*(1-t));
+        const b = Math.round(ab*t + bb*(1-t));
+        return `#${[r,g,b].map(v=>v.toString(16).padStart(2,"0")).join("")}`;
+      } catch { return base; }
+    };
+    const applyTint = (accent) => {
+      const isDark = theme === "dark";
+      const base3 = isDark ? "#18181f" : "#e8e8f2";
+      const base4 = isDark ? "#21212c" : "#dcdcec";
+      root.style.setProperty("--bg3", mixColor(accent, base3, 8));
+      root.style.setProperty("--bg4", mixColor(accent, base4, 12));
     };
     if (isCustom) {
       applyAccent("--accent", profile.customAccent);
       applyAccent("--accent2", profile.customAccent2);
       applyAccent("--accent3", profile.customAccent3);
+      applyAccent("--accent4", "#ffba3b");
+      applyAccent("--accent5", "#38b6ff");
+      applyTint(profile.customAccent || "#7c6dff");
     } else {
       applyAccent("--accent", pal.accent);
       applyAccent("--accent2", pal.accent2);
       applyAccent("--accent3", pal.accent3);
       applyAccent("--accent4", pal.accent4);
       applyAccent("--accent5", pal.accent5);
+      applyTint(pal.accent);
     }
   }, [theme, profile.paletteIdx, profile.customAccent, profile.customAccent2, profile.customAccent3]);
 
@@ -104,6 +128,11 @@ export function ProfileProvider({ children, showToast }) {
     });
   }, []);
 
+  const clearHistory = useCallback(() => {
+    setHistory([]);
+    persist(STORAGE_KEYS.HISTORY, []);
+  }, []);
+
   const recordUsage = useCallback((toolId) => {
     setHistory((prev) => {
       const existing = prev.find((h) => h.id === toolId);
@@ -125,10 +154,13 @@ export function ProfileProvider({ children, showToast }) {
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
-    Object.assign(document.createElement("a"), {
+    const a = Object.assign(document.createElement("a"), {
       href: url,
       download: `ConvertLab-presets-${Date.now()}.json`,
-    }).click();
+    });
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast("Presets exported!", "success");
   }, [profile, theme, favorites, showToast]);
@@ -171,6 +203,7 @@ export function ProfileProvider({ children, showToast }) {
         toggleFav,
         history,
         recordUsage,
+        clearHistory,
         exportPresets,
         importPresets,
       }}
