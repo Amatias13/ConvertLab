@@ -26,36 +26,36 @@ export default function JsonTool() {
     }
   }, []);
 
-  const format = useCallback((val = input) => {
+  const format = (val = input, ind = indent) => {
     try {
-      const ind = indent === "tab" ? "\t" : indent;
-      setOutput(JSON.stringify(JSON.parse(val), null, ind));
+      const indChar = ind === "tab" ? "\t" : ind;
+      setOutput(JSON.stringify(JSON.parse(val), null, indChar));
       setError("");
     } catch (e) {
       setError(e.message);
     }
-  }, [input, indent]);
+  };
 
-  const minify = useCallback((val = input) => {
+  const minify = (val = input) => {
     try {
       setOutput(JSON.stringify(JSON.parse(val)));
       setError("");
     } catch (e) {
       setError(e.message);
     }
-  }, [input]);
+  };
 
   const handleInput = (val) => {
     setInput(val);
     validate(val);
-    if (output) format(val);
+    if (output) format(val, indent);
   };
 
   return (
     <div className="tool-wrap">
       <ToolHeader title="JSON Formatter & Validator" desc="Format, minify and validate JSON">
-        <Btn onClick={minify}>Minify</Btn>
-        <Btn onClick={format} primary>
+        <Btn onClick={() => minify()}>Minify</Btn>
+        <Btn onClick={() => format()} primary>
           Format
         </Btn>
       </ToolHeader>
@@ -64,7 +64,14 @@ export default function JsonTool() {
         <OptLabel>Indent:</OptLabel>
         <OptGroup>
           {[2, 4, "tab"].map((v) => (
-            <OptBtn key={v} active={indent === v} onClick={() => setIndent(v)}>
+            <OptBtn
+              key={v}
+              active={indent === v}
+              onClick={() => {
+                setIndent(v);
+                if (output && input) format(input, v);
+              }}
+            >
               {v}
             </OptBtn>
           ))}
@@ -89,7 +96,6 @@ export default function JsonTool() {
           <PanelLabel right={status && <StatusBadge type={status}>{status === "ok" ? "Valid JSON" : "Invalid JSON"}</StatusBadge>}>Input</PanelLabel>
           <CodeArea value={input} onChange={handleInput} placeholder={'Paste your JSON here...\n\n{"name":"ConvertLab","awesome":true}'} />
         </Panel0>
-
         <Panel>
           <PanelLabel>Output</PanelLabel>
           <CodeArea value={output} readOnly placeholder="Formatted output will appear here..." />
