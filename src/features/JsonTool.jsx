@@ -36,7 +36,6 @@ export default function JsonTool() {
     }
   }, [input, indent]);
 
-  // indent intentionally excluded — minify output is always flat
   const minify = useCallback((val = input) => {
     try {
       setOutput(JSON.stringify(JSON.parse(val)));
@@ -45,15 +44,6 @@ export default function JsonTool() {
       setError(e.message);
     }
   }, [input]);
-
-  const reformat = (newIndent) => {
-    if (!input.trim()) return;
-    try {
-      const ind = newIndent === "tab" ? "\t" : newIndent;
-      setOutput(JSON.stringify(JSON.parse(input), null, ind));
-      setError("");
-    } catch {}
-  };
 
   const handleInput = (val) => {
     setInput(val);
@@ -74,7 +64,7 @@ export default function JsonTool() {
         <OptLabel>Indent:</OptLabel>
         <OptGroup>
           {[2, 4, "tab"].map((v) => (
-            <OptBtn key={v} active={indent === v} onClick={() => { setIndent(v); reformat(v); }}>
+            <OptBtn key={v} active={indent === v} onClick={() => setIndent(v)}>
               {v}
             </OptBtn>
           ))}

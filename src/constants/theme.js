@@ -73,4 +73,3 @@ export const STATUS_COLORS = {
   warn: "var(--accent4)",
   info: "var(--accent5)",
 };
-

@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import fs from "fs";
 import path from "path";
 
-// Plugin: inject build timestamp into sw.js so cache busts on every deploy
 function swVersionPlugin() {
   return {
     name: "sw-version",
@@ -12,13 +11,30 @@ function swVersionPlugin() {
       if (!fs.existsSync(swPath)) return;
       const ts = Date.now();
       let sw = fs.readFileSync(swPath, "utf-8");
-      sw = sw.replace(/ConvertLab-v\d+/, `ConvertLab-v${ts}`);
+      sw = sw.replace(/ConvertLab-v[\w-]+/, `ConvertLab-v${ts}`);
       fs.writeFileSync(swPath, sw);
     },
   };
 }
 
 export default defineConfig({
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./src/__tests__/setup.js"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html"],
+      // Covers only testable pure logic — helpers and data constants
+      // Feature/component/context files require browser rendering (integration tests)
+      include: ["src/helpers/**", "src/constants/**"],
+      exclude: [
+        "src/__tests__/**",
+        "src/constants/app.js", // pure string/number exports — nothing to execute
+      ],
+    },
+  },
+
   plugins: [react(), swVersionPlugin()],
   base: "/ConvertLab/",
   build: {
@@ -26,9 +42,7 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          react: ["react", "react-dom"],
-        },
+        manualChunks: { react: ["react", "react-dom"] },
       },
     },
   },

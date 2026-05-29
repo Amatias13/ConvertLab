@@ -12,6 +12,7 @@ import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
 import ShortcutsModal from "./modules/ShortcutsModal";
 import { TOOL_MAP } from "./features";
 import "./App.css";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function AppInner() {
   const [activeTool, setActiveToolState] = useState(DEFAULT_TOOL);
@@ -42,7 +43,7 @@ function AppInner() {
       <div className="app-body">
         <Sidebar activeTool={activeTool} setActiveTool={setActiveTool} />
         <main key={activeTool} className="fade-in app-main">
-          {ActiveTool ? <ActiveTool /> : <div className="app-empty">Select a tool from the sidebar</div>}
+          <ErrorBoundary key={activeTool}>{ActiveTool ? <ActiveTool /> : <div className="app-empty">Select a tool from the sidebar</div>}</ErrorBoundary>
         </main>
       </div>
       <AboutModal toolId={activeTool} />
